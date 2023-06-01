@@ -1,0 +1,53 @@
+@import url(./font.css);
+@import url(../../assets/icons/style.css);
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --tint-one: #E5F2E9;
+    --tint-two: #CAE4D3;
+    --tint-three: #B0D7BD;
+    --tint-four: #96C9A7;
+    --tint-five: #7CBC91;
+    --tint-six: #61AE7B;
+    --tint-seven: #4E996B;
+    --primary: #417f56;
+    --shade-one: #396F4B;
+    --shade-two: #315F41;
+    --shade-three: #294F36;
+    --shade-four: #21402B;
+    --shade-five: #183020;
+    --shade-six: #0102016;
+    --shade-seven: #08100B;
+    --white: #ffffff;
+    --gray-one: #F9F9F9;
+    --gray-two: #E1E1E1;
+    --gray-three: #EDEDED;
+    --gray-four: #CBCBCB;
+    --gray-five: #ADADAD;
+    --gray-six: #757575;
+    --gray-seven: #717171;
+    --gray-eight: #353535;
+    --black: #0C0C0C;
+    --error: #C30000;
+    --error-light: #ED2E2E;
+    --error-extra-light: #FFF2F2;
+    --success: #00966D;
+    --success-light: #00BA88;
+    --success-extera-light: #F3FDFA;
+    --warning: #A9791C;
+    --warning-light: #F4B740;
+    --warning-extera-light: #FFF8E1;
+    --Iconsax-Size: 20px;
+    --Iconsax-Color: #9fb3c7;
+}
+
+body {
+    overflow-x: hidden;
+}

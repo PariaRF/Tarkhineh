@@ -1,0 +1,78 @@
+@font-face {
+    font-family: estedad;
+    /* src: url(/assets/Estedad-ExtraLight-8252c616.ttf); */
+    src: url(/assets/fonts/Estedad-ExtraLight.ttf);
+    font-weight: 100
+}
+
+@font-face {
+    font-family: estedad;
+    /* src: url(/assets/Estedad-Thin-088fef98.ttf); */
+    src: url(/assets/fonts/Estedad-Thin.ttf);
+    font-weight: 200
+}
+
+@font-face {
+    font-family: estedad;
+    /* src: url(/assets/Estedad-Light-e6482dbd.ttf); */
+    src: url(/assets/fonts/Estedad-Light.ttf);
+    font-weight: 300
+}
+
+@font-face {
+    font-family: estedad;
+    /* src: url(/assets/Estedad-Regular-21813d00.ttf); */
+    src: url(/assets/fonts/Estedad-Regular.ttf);
+    font-weight: 400
+}
+
+@font-face {
+    font-family: estedad;
+    /* src: url(/assets/Estedad-Medium-2af1a09b.ttf); */
+    src: url(/assets/fonts/Estedad-Medium.ttf);
+    font-weight: 500
+}
+
+@font-face {
+    font-family: estedad;
+    /* src: url(/assets/Estedad-SemiBold-767eea12.ttf); */
+    src: url(/assets/fonts/Estedad-SemiBold.ttf);
+    font-weight: 600
+}
+
+@font-face {
+    font-family: estedad;
+    /* src: url(/assets/Estedad-Bold-398f032e.ttf); */
+    src: url(/assets/fonts/Estedad-Bold.ttf);
+    font-weight: 700
+}
+
+@font-face {
+    font-family: estedad;
+    /* src: url(/assets/Estedad-ExtraBold-94ffa8b3.ttf); */
+    src: url(/assets/fonts//Estedad-ExtraBold.ttf);
+    font-weight: 800
+}
+
+@font-face {
+    font-family: estedad;
+    /* src: url(/assets/Estedad-Black-dd6faaef.ttf); */
+    src: url(/assets/fonts/Estedad-Black.ttf);
+    font-weight: 900
+}
+
+@font-face {
+    font-family: estedad-fd;
+    /* src: url(/assets/Estedad-FD-Bold-2dc34543.ttf); */
+    src: url(/assets/fonts/Estedad-FD-Bold.ttf);
+    font-weight: 700
+}
+
+.font-estedad {
+    font-family: estedad;
+}
+
+body {
+    font-family: estedad;
+
+}
