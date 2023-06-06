@@ -1,69 +1,59 @@
 @font-face {
     font-family: estedad;
-    /* src: url(/assets/Estedad-ExtraLight-8252c616.ttf); */
     src: url(/assets/fonts/Estedad-ExtraLight.ttf);
     font-weight: 100
 }
 
 @font-face {
     font-family: estedad;
-    /* src: url(/assets/Estedad-Thin-088fef98.ttf); */
     src: url(/assets/fonts/Estedad-Thin.ttf);
     font-weight: 200
 }
 
 @font-face {
     font-family: estedad;
-    /* src: url(/assets/Estedad-Light-e6482dbd.ttf); */
     src: url(/assets/fonts/Estedad-Light.ttf);
     font-weight: 300
 }
 
 @font-face {
-    font-family: estedad;
-    /* src: url(/assets/Estedad-Regular-21813d00.ttf); */
+    font-family: estedad-regular;
     src: url(/assets/fonts/Estedad-Regular.ttf);
     font-weight: 400
 }
 
 @font-face {
-    font-family: estedad;
-    /* src: url(/assets/Estedad-Medium-2af1a09b.ttf); */
+    font-family: estedad-medium;
     src: url(/assets/fonts/Estedad-Medium.ttf);
     font-weight: 500
 }
 
 @font-face {
     font-family: estedad;
-    /* src: url(/assets/Estedad-SemiBold-767eea12.ttf); */
     src: url(/assets/fonts/Estedad-SemiBold.ttf);
     font-weight: 600
 }
 
 @font-face {
-    font-family: estedad;
-    /* src: url(/assets/Estedad-Bold-398f032e.ttf); */
+    font-family: estedad-bold;
     src: url(/assets/fonts/Estedad-Bold.ttf);
     font-weight: 700
 }
 
 @font-face {
     font-family: estedad;
-    /* src: url(/assets/Estedad-ExtraBold-94ffa8b3.ttf); */
     src: url(/assets/fonts//Estedad-ExtraBold.ttf);
     font-weight: 800
 }
 
 @font-face {
-    font-family: estedad;
-    /* src: url(/assets/Estedad-Black-dd6faaef.ttf); */
+    font-family: estedad-black;
     src: url(/assets/fonts/Estedad-Black.ttf);
     font-weight: 900
 }
 
 @font-face {
     font-family: estedad-fd;
-    /* src: url(/assets/Estedad-FD-Bold-2dc34543.ttf); */
     src: url(/assets/fonts/Estedad-FD-Bold.ttf);
     font-weight: 700
 }
@@ -74,5 +64,68 @@
 
 body {
     font-family: estedad;
+}
 
+.display-one {
+    font-family: estedad-bold;
+    font-weight: bold;
+    font-size: 4rem;
+    line-height: 140%;
+}
+
+.display-two {
+    font-weight: bold;
+    font-size: 3.5rem;
+    line-height: 120%;
+}
+
+.h {
+    font-family: estedad-bold;
+    font-weight: bold;
+    line-height: 140%;
+}
+
+.h-one {
+    font-size: 2.75rem;
+}
+
+.h-two {
+    font-size: 2.5rem;
+}
+
+.h-three {
+    font-size: 2rem;
+}
+
+.h-four {
+    font-size: 1.5rem;
+}
+
+.h-five {
+    font-size: 1.25rem;
+}
+
+.h6 {
+    font-size: 1rem;
+}
+
+.body-text {
+    font-family: estedad-regular;
+    line-height: 180%;
+    font-weight: bold;
+}
+
+.body-xl {
+    font-size: 1.5rem;
+}
+
+.body-md {
+    font-family: estedad-regular;
+    font-size: 1.5rem;
+}
+
+.button-lg {
+    font-family: estedad-medium;
+    font-size: 1rem;
+    line-height: 180%;
 }

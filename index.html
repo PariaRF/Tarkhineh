@@ -1,4 +1,4 @@
-<html lang="en">
+<html dir="rtl">
 
 <head>
     <meta charset="UTF-8">
@@ -7,12 +7,158 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="//glenthemes.github.io/iconsax/geticons.js"></script>
     <link href="//glenthemes.github.io/iconsax/style.css" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="../assets/icons/vite.svg">
+    <link rel="icon" type="image/svg+xml" href="./assets/icons/Tarkhineh.ico">
     <link rel="stylesheet" href="./css/main.css">
     <title>Tarkhineh | رستوران زنجیره ای</title>
 </head>
 
 <body>
+    <!-- HEADER -->
+    <header class="flex-around">
+        <div class="header__container flex-around">
+            <button id="mobile-menu-icon" class="flex-center reset hidden">
+                <i class="iconsax" icon-name="menu-hamburger"></i>
+            </button>
+            <img class="header__logo" src="./assets/images/Logo-tarkhine.svg" alt="Tarkhineh-logo">
+            <nav id="menu" class="flex-center">
+                <ul class="nav__menu flex-center body-text body-xl">
+                    <li class="nav__link">
+                        <a class="nav__link__item active" href="#">صفحه اصلی</a>
+                    </li>
+                    <li class="nav__link nav__link__item" id="branch">
+                        <a class="submenu__label nav__link__item">شعبه</a>
+                        <div class="submenu">
+                            <div class="submenu__item">
+                                <img class="submenu__item__img" src="./assets/images/branches/Ekbatan.webp"
+                                    alt="Ekbatan-branch">
+                                <div class="submenu__item__info">
+                                    <h4>اکباتان</h4>
+                                    <span class="body-xl">شهرک اکباتان، فاز سوم، مجتمع تجاری کوروش، طبقه سوم</span>
+                                </div>
+                            </div>
+                            <div class="submenu__item">
+                                <img class="submenu__item__img" src="./assets/images/branches/Chalus-.webp"
+                                    alt="Chalos-branch">
+                                <div class="submenu__item__info">
+                                    <h4>چالوس</h4>
+                                    <span class="body-xl">چالوس، خیابان 17 شهریور، بعد کوچه کوروش، جنب داروخانه دکتر
+                                        میلانی</span>
+                                </div>
+                            </div>
+                            <div class="submenu__item">
+                                <img class="submenu__item__img" src="./assets/images/branches/Aghdasieh.webp"
+                                    alt="Aqdasie-branch">
+                                <div class="submenu__item__info">
+                                    <h4>اقدسیه</h4>
+                                    <span class="body-xl">خیابان اقدسیه، نرسیده به میدان خیام،جنب پاساژ کوروش، پلاک
+                                        8</span>
+                                </div>
+                            </div>
+                            <div class="submenu__item">
+                                <img class="submenu__item__img" src="./assets/images/branches/Vanak.webp"
+                                    alt="Vanak-branch">
+                                <div class="submenu__item__info">
+                                    <h4>ونک</h4>
+                                    <span class="body-xl">میدان ونک، خیابان فردوسی، نبش کوچه نیلوفر، پلاک 26</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__link">
+                        <a class="nav__link__item" href="#">منو</a>
+                    </li>
+                    <li class="nav__link">
+                        <a class="nav__link__item" href="#">اعطای نمایندگی</a>
+                    </li>
+                    <li class="nav__link">
+                        <a class="nav__link__item" href="#">درباره ما</a>
+                    </li>
+                    <li class="nav__link">
+                        <a class="nav__link__item" href="#">تماس با ما</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header__icons flex-center">
+                <button id="search-icon" class="flex-center reset">
+                    <i class="iconsax" icon-name="search-normal-2"></i>
+                </button>
+                <button class="flex-center reset">
+                    <i class="iconsax" icon-name="shopping-cart"></i>
+                </button>
+                <button class="flex-center reset">
+                    <i class="iconsax" icon-name="user-2"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- MOBILE-MENU -->
+    <nav id="mobile-menu">
+        <ul class="mobile-menu__nav flex-center body-md">
+            <li class="mobile-menu__header flex-around">
+                <button class="flex-center reset mobile-menu__close">
+                    <i class="iconsax" icon-name="close-circle"></i>
+                </button>
+                <img src="./assets/images/Logo-tarkhine.svg" alt="Tarkhineh-logo">
+            </li>
+            <div class="mobile-menu__container">
+                <li class="nav__link">
+                    <a class="nav__link__item active" href="#">صفحه اصلی</a>
+                </li>
+                <li class="nav__link" id="branch">
+                    <a id="submenu-label" class="submenu__label nav__link__item">شعبه</a>
+                    <div id="mobile-menu__submenu" class="mobile-menu__submenu-show mobile-menu__submenu">
+                        <div class="submenu__item">
+                            <img class="submenu__item__img" src="./assets/images/branches/Ekbatan.webp"
+                                alt="Ekbatan-branch">
+                            <div class="submenu__item__info">
+                                <h4>اکباتان</h4>
+                                <span class="body-xl">شهرک اکباتان، فاز سوم، مجتمع تجاری کوروش، طبقه سوم</span>
+                            </div>
+                        </div>
+                        <div class="submenu__item">
+                            <img class="submenu__item__img" src="./assets/images/branches/Chalus-.webp"
+                                alt="Chalos-branch">
+                            <div class="submenu__item__info">
+                                <h4>چالوس</h4>
+                                <span class="body-xl">چالوس، خیابان 17 شهریور، بعد کوچه کوروش، جنب داروخانه دکتر
+                                    میلانی</span>
+                            </div>
+                        </div>
+                        <div class="submenu__item">
+                            <img class="submenu__item__img" src="./assets/images/branches/Aghdasieh.webp"
+                                alt="Aqdasie-branch">
+                            <div class="submenu__item__info">
+                                <h4>اقدسیه</h4>
+                                <span class="body-xl">خیابان اقدسیه، نرسیده به میدان خیام،جنب پاساژ کوروش، پلاک
+                                    8</span>
+                            </div>
+                        </div>
+                        <div class="submenu__item">
+                            <img class="submenu__item__img" src="./assets/images/branches/Vanak.webp"
+                                alt="Vanak-branch">
+                            <div class="submenu__item__info">
+                                <h4>ونک</h4>
+                                <span class="body-xl">میدان ونک، خیابان فردوسی، نبش کوچه نیلوفر، پلاک 26</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav__link">
+                    <a class="nav__link__item" href="#">منو</a>
+                </li>
+                <li class="nav__link">
+                    <a class="nav__link__item" href="#">اعطای نمایندگی</a>
+                </li>
+                <li class="nav__link">
+                    <a class="nav__link__item" href="#">درباره ما</a>
+                </li>
+                <li class="nav__link">
+                    <a class="nav__link__item" href="#">تماس با ما</a>
+                </li>
+            </div>
+        </ul>
+    </nav>
+
 
     <script type="module" src="./js/main.js"></script>
 </body>
