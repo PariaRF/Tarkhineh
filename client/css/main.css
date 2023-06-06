@@ -1,5 +1,5 @@
 @import url(./font.css);
-@import url(../../assets/icons/style.css);
+@import url(client/assets/icons/style.css);
 
 *,
 *::before,
@@ -338,4 +338,13 @@ header {
     #mobile-menu {
         display: none;
     }
+}
+
+/* MAIN */
+#app {
+    padding: 3rem 0;
+}
+
+#main-container {
+    width: 1024px;
 }
