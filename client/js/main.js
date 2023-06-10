@@ -10,7 +10,7 @@ const mobileMenu = document.getElementById('mobile-menu');
 const submenuLabel = document.querySelector('#submenu-label');
 const branch = document.getElementById('branch');
 const mobileMenuSubmenu = document.querySelector('#mobile-menu__submenu');
-const mainContainer = document.getElementById("main-container");
+const app = document.getElementById("app");
 
 // MOBILE MENU
 mobileMenuIcon.addEventListener("click", () => {
@@ -52,8 +52,7 @@ function router(params) {
             isMatch: true
         }
     };
-    mainContainer.innerHTML = match.route.view();
-    // console.log(match.route.view());
+    app.innerHTML = match.route.view();
 }
 
 function navigateTo(url) {
