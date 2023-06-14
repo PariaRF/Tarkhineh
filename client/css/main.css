@@ -57,7 +57,6 @@ body {
 }
 
 /* MOST USED CLASSES */
-
 .flex-center {
     display: flex;
     justify-content: center;
@@ -79,7 +78,6 @@ body {
 }
 
 /* DESKTOP HEADER */
-
 header {
     padding: 1.5rem;
 }
@@ -222,7 +220,6 @@ header {
 }
 
 /* MOBILE HEADER */
-
 #mobile-menu-icon .iconsax svg {
     width: 3rem;
     height: 3rem;
@@ -349,7 +346,6 @@ header {
 }
 
 /* MAIN PAHGE */
-
 #slider {
     height: 35rem;
     background-image:
@@ -364,11 +360,11 @@ header {
     align-items: center;
     justify-content: center;
     position: relative;
+    box-shadow: 0 4px 9px rgb(0 0 0 / 12%);
 }
 
 .slider__header {
     width: 100%;
-    /* height: 100%; */
     color: #fff;
     justify-content: space-between;
 }
@@ -433,6 +429,8 @@ header {
     #slider {
         height: 20rem;
         padding-top: 3rem;
+        animation-fill-mode: forwards;
+
     }
 
     .slider__header {
@@ -466,13 +464,184 @@ header {
         border-top-right-radius: 24rem
     }
 
+    .slider__controller__container {
+        height: 2rem;
+    }
+
     .slider__controller__circle {
         width: 0.75rem;
         height: 0.75rem;
     }
 
     .circle-active {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 1px solid white;
+    }
+}
+
+.restaurant__menu {
+    background-color: white;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 4rem;
+    height: 30.5rem;
+}
+
+.restaurant__menu__content {
+    width: 1024px;
+    height: 120px;
+    display: grid;
+    justify-content: space-between;
+    grid-template-areas: "main appetizer dessert drink";
+    opacity: 0;
+}
+
+.showResturantMenuContent {
+    position: relative;
+    animation: showContent 2s ease forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes showContent {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.menu__content__item {
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    width: 18rem;
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.item-main-area {
+    grid-area: main;
+}
+
+.item-appetizer-area {
+    grid-area: appetizer;
+}
+
+.item-dessert-area {
+    grid-area: dessert;
+}
+
+.item-drink-area {
+    grid-area: drink;
+}
+
+.content__item__img {
+    width: 15rem;
+    height: 15rem;
+    position: absolute;
+    top: -69px;
+}
+
+.content__item__btn {
+    position: absolute;
+    bottom: -1rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    width: 9.5rem;
+    height: 3rem;
+    cursor: pointer;
+    box-shadow: 0 25px 7px rgba(0, 0, 0, 0%),
+        0 16px 6px 0 rgba(0, 0, 0, 0%),
+        0 9px 5px rgba(0, 0, 0, 5%),
+        0 4px 4px rgba(0, 0, 0, 9%),
+        0 1px 2px rgba(0, 0, 0, 10%),
+        0 0 0 rgba(0, 0, 0, 10%);
+    font-family: estedad-regular;
+    font-size: 1.5rem;
+}
+
+.search-box {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .restaurant__menu {
+        padding-top: 1.5rem;
+    }
+
+    .restaurant__menu__content {
+        width: 100vw;
+        height: 436px;
+        grid-template-areas:
+            "main appetizer"
+            "dessert drink";
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 82px;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+        animation: none;
+    }
+
+    .h-three {
+        font-size: 2rem;
+        margin-bottom: 63px;
+    }
+
+    .menu__content__item {
+        width: 152px;
+        height: 81px;
+    }
+
+    .content__item__img {
+        width: 102px;
+        height: 100px;
+        top: -52px;
+    }
+
+    .content__item__btn {
+        bottom: -1rem;
+        width: 71px;
+        height: 32px;
+        white-space: nowrap;
+        font-family: estedad-medium;
+        font-size: 1rem;
+    }
+
+    .search-box {
+        display: block;
+        width: 33rem;
+        height: 32px;
+        border-radius: 4px;
+        border: 1px solid var(--gray-four);
+        display: flex;
+        padding: 8px 16px;
+        align-items: center;
+        margin-bottom: 2.75rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 7%);
+    }
+
+    .search-box__input {
+        color: var(--gray-eight);
+        flex: 1;
+    }
+
+    .search-box__input::placeholder {
+        color: var(--gray-eight);
+    }
+
+    .search-box svg {
+        width: 16px;
+        height: 16px;
     }
 }
