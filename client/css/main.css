@@ -487,6 +487,7 @@ header {
     align-items: center;
     padding-top: 4rem;
     height: 30.5rem;
+    margin-bottom: 72px;
 }
 
 .restaurant__menu__content {
@@ -558,7 +559,7 @@ header {
     border-radius: 4px;
     padding: 0.5rem 1rem;
     width: 9.5rem;
-    height: 3rem;
+    /* height: 3rem; */
     cursor: pointer;
     box-shadow: 0 25px 7px rgba(0, 0, 0, 0%),
         0 16px 6px 0 rgba(0, 0, 0, 0%),
@@ -576,21 +577,23 @@ header {
 
 @media screen and (max-width: 768px) {
     .restaurant__menu {
-        padding-top: 1.5rem;
+        padding: 1.5rem 3rem;
+        margin-bottom: 20rem;
     }
 
     .restaurant__menu__content {
         width: 100vw;
         height: 436px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 100%);
+        justify-items: center;
         grid-template-areas:
             "main appetizer"
             "dessert drink";
         grid-column-gap: 1.5rem;
-        grid-row-gap: 82px;
-        justify-content: center;
-        align-items: center;
+        grid-row-gap: 9rem;
         opacity: 1;
-        animation: none;
+        /* animation: none; */
     }
 
     .h-three {
@@ -599,19 +602,19 @@ header {
     }
 
     .menu__content__item {
-        width: 152px;
-        height: 81px;
+        width: 100%;
+        height: calc(100% - 0px);
     }
 
     .content__item__img {
-        width: 102px;
-        height: 100px;
-        top: -52px;
+        /* width: 102px;
+        height: 100px; */
+        /* top: -52px; */
+        top: -8rem;
     }
 
     .content__item__btn {
         bottom: -1rem;
-        width: 71px;
         height: 32px;
         white-space: nowrap;
         font-family: estedad-medium;
@@ -620,7 +623,7 @@ header {
 
     .search-box {
         display: block;
-        width: 33rem;
+        width: 100%;
         height: 32px;
         border-radius: 4px;
         border: 1px solid var(--gray-four);
@@ -643,5 +646,137 @@ header {
     .search-box svg {
         width: 16px;
         height: 16px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .content__item__img {
+        width: 12rem;
+        height: 12rem;
+        top: -64px;
+    }
+
+    .content__item__btn {
+        width: 71px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .restaurant__menu__content {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+.about-restaurant {
+    background-image: url(../assets/images/about.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 1.5rem;
+    color: white;
+    display: flex;
+    padding: 2rem 10.5rem;
+    justify-content: center;
+}
+
+.about-restaurant__container {
+    width: 1024px;
+    display: flex;
+}
+
+.about-restaurant__text {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.text__header {
+    color: var(--white);
+    margin-bottom: 2rem;
+}
+
+.text__body {
+    max-width: 43rem;
+    text-align: justify;
+    margin-bottom: 2rem;
+
+    line-height: 2.75rem;
+}
+
+.text__btn-container {
+    max-width: 43rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.text__btn-more {
+    border: 1px solid var(--gray-five);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.text__btn-more svg {
+    margin-right: 1.5rem;
+}
+
+.about-restaurant__icons {
+    flex: 1;
+    display: grid;
+    grid-template-areas:
+        "Personnel quality"
+        "enviroment menu";
+    justify-content: flex-end;
+    justify-items: center;
+}
+
+.icons__item-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 16.4rem;
+    height: 11.6rem;
+}
+
+.icons__item__text {
+    line-height: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+    .about-restaurant__container {
+        /* width: 100%; */
+        flex-direction: column;
+    }
+
+    .text__header {
+        font-size: 1.6rem;
+        line-height: 180%;
+    }
+
+    .about-restaurant__text {
+        margin-bottom: 2rem;
+    }
+
+    .text__body {
+        font-size: 1.3rem;
+        line-height: 180%;
+    }
+
+    .text__btn-more {
+        padding: 0.5rem 3rem;
+    }
+
+    .text__btn-more svg {
+        display: none;
+    }
+
+    .about-restaurant__icons {
+        justify-content: center;
     }
 }
