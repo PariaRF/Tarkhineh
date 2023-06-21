@@ -3,7 +3,7 @@ const MainPage = () => {
         let container = document.querySelector('.restaurant__menu__content');
         const scrollPossition = window.scrollY;
         const triggerPossition = container.offsetTop / 2;
-        console.log(scrollPossition, triggerPossition, container.offsetTop, container.offsetHeight);
+        // console.log(scrollPossition, triggerPossition, container.offsetTop, container.offsetHeight);
         if (scrollPossition >= 100) {
             container.classList.add('showResturantMenuContent');
             // container.style.opacity = "1";
@@ -119,6 +119,107 @@ const MainPage = () => {
                             <path d="M6.70001 16H14.7" stroke="#fff" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>                                               
                         <span class="body-md icons__item__text">منوی متنوع</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="branches">
+            <h4 class="branches__title h-three">ترخینه گردی</h4>
+            <div class="branches__container flex-center">
+                <div class="flex-center branches__container__card">
+                    <img class="branches__container__card__img" src="client/assets/images/branches/Ekbatan.webp"/>
+                    <i class="branches__container__card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.67004 18.9501L7.60004 15.6401C8.39004 15.1101 9.53004 15.1701 10.24 15.7801L10.57 16.0701C11.35 16.7401 12.61 16.7401 13.39 16.0701L17.55 12.5001C18.33 11.8301 19.59 11.8301 20.37 12.5001L22 13.9001" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </i>         
+                    <div class="branches__container__card__info">
+                        <h6 class="body-text h-five branches__container__card__title">شعبه اکباتان</h6>
+                        <span class="body-xl">
+                            شهرک اکباتان، فاز سوم، مجتمع تجاری کوروش، طبقه سوم
+                        </span>
+                        <button class="reset button-lg branches__container__card__btn">
+                            صفحه شعبه
+                            <i>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 19.9201L8.47997 13.4001C7.70997 12.6301 7.70997 11.3701 8.47997 10.6001L15 4.08008" stroke="#315F41" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                    
+                            </i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex-center branches__container__card">
+                    <img class="branches__container__card__img" src="client/assets/images/branches/Chalus-.webp"/>
+                    <i class="branches__container__card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.67004 18.9501L7.60004 15.6401C8.39004 15.1101 9.53004 15.1701 10.24 15.7801L10.57 16.0701C11.35 16.7401 12.61 16.7401 13.39 16.0701L17.55 12.5001C18.33 11.8301 19.59 11.8301 20.37 12.5001L22 13.9001" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </i>
+                    <div class="branches__container__card__info">
+                        <h6 class="body-text h-five branches__container__card__title">شعبه اکباتان</h6>
+                        <span class="body-xl">
+                            شهرک اکباتان، فاز سوم، مجتمع تجاری کوروش، طبقه سوم
+                        </span>
+                        <button class="reset button-lg branches__container__card__btn">
+                            صفحه شعبه
+                            <i>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 19.9201L8.47997 13.4001C7.70997 12.6301 7.70997 11.3701 8.47997 10.6001L15 4.08008" stroke="#315F41" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                    
+                            </i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex-center branches__container__card">
+                    <img class="branches__container__card__img" src="client/assets/images/branches/Aghdasieh.webp"/>
+                    <i class="branches__container__card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.67004 18.9501L7.60004 15.6401C8.39004 15.1101 9.53004 15.1701 10.24 15.7801L10.57 16.0701C11.35 16.7401 12.61 16.7401 13.39 16.0701L17.55 12.5001C18.33 11.8301 19.59 11.8301 20.37 12.5001L22 13.9001" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </i>
+                    <div class="branches__container__card__info">
+                        <h6 class="body-text h-five branches__container__card__title">شعبه اکباتان</h6>
+                        <span class="body-xl">
+                            شهرک اکباتان، فاز سوم، مجتمع تجاری کوروش، طبقه سوم
+                        </span>
+                        <button class="reset button-lg branches__container__card__btn">
+                            صفحه شعبه
+                            <i>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 19.9201L8.47997 13.4001C7.70997 12.6301 7.70997 11.3701 8.47997 10.6001L15 4.08008" stroke="#315F41" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                    
+                            </i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex-center branches__container__card">
+                    <img class="branches__container__card__img" src="client/assets/images/branches/Vanak.webp"/>
+                    <i class="branches__container__card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.67004 18.9501L7.60004 15.6401C8.39004 15.1101 9.53004 15.1701 10.24 15.7801L10.57 16.0701C11.35 16.7401 12.61 16.7401 13.39 16.0701L17.55 12.5001C18.33 11.8301 19.59 11.8301 20.37 12.5001L22 13.9001" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </i>
+                    <div class="branches__container__card__info">
+                        <h6 class="body-text h-five branches__container__card__title">شعبه اکباتان</h6>
+                        <span class="body-xl">
+                            شهرک اکباتان، فاز سوم، مجتمع تجاری کوروش، طبقه سوم
+                        </span>
+                        <button class="reset button-lg branches__container__card__btn">
+                            صفحه شعبه
+                            <i>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 19.9201L8.47997 13.4001C7.70997 12.6301 7.70997 11.3701 8.47997 10.6001L15 4.08008" stroke="#315F41" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                    
+                            </i>
+                        </button>
                     </div>
                 </div>
             </div>

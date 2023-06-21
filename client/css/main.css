@@ -559,7 +559,6 @@ header {
     border-radius: 4px;
     padding: 0.5rem 1rem;
     width: 9.5rem;
-    /* height: 3rem; */
     cursor: pointer;
     box-shadow: 0 25px 7px rgba(0, 0, 0, 0%),
         0 16px 6px 0 rgba(0, 0, 0, 0%),
@@ -593,7 +592,6 @@ header {
         grid-column-gap: 1.5rem;
         grid-row-gap: 9rem;
         opacity: 1;
-        /* animation: none; */
     }
 
     .h-three {
@@ -607,9 +605,6 @@ header {
     }
 
     .content__item__img {
-        /* width: 102px;
-        height: 100px; */
-        /* top: -52px; */
         top: -8rem;
     }
 
@@ -777,6 +772,203 @@ header {
     }
 
     .about-restaurant__icons {
-        justify-content: center;
+        justify-content: space-between;
     }
+}
+
+.branches {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 45rem;
+    width: 100%;
+}
+
+.branches__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 1024px;
+    grid-gap: 10px;
+}
+
+.branches__container__card {
+    width: 100%;
+    flex-direction: column;
+    justify-content: start;
+    height: 34.4rem;
+    border-radius: 8px;
+    border: 1px solid var(--gray-four);
+    position: relative;
+    overflow: hidden;
+}
+
+.branches__container__card__img {
+    width: 100%;
+    height: 60%;
+    margin-bottom: 1rem;
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.branches__container__card__icon {
+    position: absolute;
+    top: 9rem;
+    left: 10rem;
+    z-index: 9999;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s ease-in;
+}
+
+.branches__container__card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 55%;
+    z-index: 99;
+    opacity: 0;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+
+.branches__container__card:hover::before {
+    opacity: 1;
+}
+
+.branches__container__card__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.branches__container__card__title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 180%;
+    color: var(--gray-eight);
+}
+
+.branches__container__card span {
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 180%;
+}
+
+.branches__container__card__btn {
+    width: 12.8rem;
+    height: 3.2rem;
+    border: 1px solid var(--shade-two);
+    color: var(--shade-two);
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 8px;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    opacity: 0;
+    transition: all 0.5s ease;
+    transform: translateY(50px);
+    position: absolute;
+    bottom: 3rem;
+}
+
+.branches__container__card:hover {
+    box-shadow: 0px 16px 6px rgba(0, 0, 0, 0.01),
+        0px 9px 5px rgba(0, 0, 0, 0.05),
+        0px 4px 4px rgba(0, 0, 0, 0.09),
+        0px 1px 2px rgba(0, 0, 0, 0.1),
+        0px 0px 0px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.branches__container__card:hover .branches__container__card__img {
+    height: 55%;
+}
+
+.branches__container__card:hover .branches__container__card__btn {
+    opacity: 1;
+    transform: translateY(20px);
+}
+
+.branches__container__card:hover .branches__container__card__icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media screen and (max-width: 1022px) {
+    .branches__container {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .branches__container__card {
+        width: calc(50% - 20px);
+        flex-direction: row;
+        height: 120px;
+        margin: 0.5rem;
+    }
+
+    .branches__container__card:hover::before {
+        opacity: 0;
+    }
+
+    .branches__container__card__img {
+        margin-bottom: 0;
+        height: 100%;
+        width: 53%;
+    }
+
+    .branches__container__card__title {
+        font-size: 18px;
+    }
+
+    .branches__container__card span {
+        text-align: center;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 180%;
+    }
+
+    .branches__container__card:hover {
+        animation: none;
+    }
+
+    .branches__container__card:hover .branches__container__card__btn {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    .branches__container__card:hover .branches__container__card__img {
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .branches {
+        height: 50rem;
+    }
+
+    .branches__title {
+        margin: 11px 0;
+    }
+
+    .branches__container {
+        width: 80%;
+    }
+
+    .branches__container__card {
+        width: 81%;
+        height: 100px;
+    }
+
 }
