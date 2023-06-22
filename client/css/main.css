@@ -69,6 +69,11 @@ body {
     align-items: center;
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .reset {
     border: none;
     outline: none;
@@ -338,8 +343,205 @@ header {
     }
 }
 
-/* MAIN */
+/* DESKTOP FOOTER */
+footer {
+    height: 30.9rem;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(../assets/images/footer-img.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+}
 
+.footer__container {
+    width: 1024px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.footer__container .flex-column {
+    width: 184px;
+    height: 192px;
+    justify-content: space-around;
+}
+
+.footer__container div h5 {
+    font-family: estedad-regular;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    margin-bottom: 1rem;
+}
+
+.footer__container .footer__container__contact span,
+.footer__container .footer__container__branches span {
+    font-family: estedad-regular;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 180%;
+    cursor: pointer;
+}
+
+.footer__container__contact {
+    flex: 1;
+}
+
+.footer__container__branches {
+    flex: 1;
+}
+
+.footer__container__msg {
+    flex: 2;
+}
+
+.footer__contianer__contact__social-media {
+    display: flex;
+    align-items: center;
+}
+
+.footer__contianer__contact__social-media i svg:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    opacity: 0.7;
+}
+
+.footer__contianer__contact__social-media i {
+    margin: 1rem 0 1rem 1rem;
+}
+
+.footer__container__msg__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "name msg"
+        "number msg"
+        "email msg"
+        ". count"
+        ". btn";
+    grid-gap: 1rem;
+    position: relative;
+}
+
+.footer__container__msg__form input,
+.footer__container__msg__form textarea,
+.footer__container__msg__form button {
+    font-family: estedad-regular;
+    border: 1px solid var(--gray-seven);
+    color: var(--gray-one);
+    border-radius: 4px;
+    padding: 0.3rem 1rem;
+    resize: none;
+}
+
+.footer__container__msg__form input:focus,
+.footer__container__msg__form textarea:focus,
+.footer__container__msg__form button:hover {
+    border: 1px solid #fffc;
+    box-shadow: 0 0 7px 0px #ffffffbf;
+}
+
+.footer__container__msg__form input::placeholder,
+.footer__container__msg__form textarea::placeholder {
+    color: var(--gray-one);
+}
+
+.msg__form__full-name {
+    grid-area: name;
+    cursor: progress;
+}
+
+.msg__form__number {
+    grid-area: number;
+    cursor: progress;
+}
+
+.msg__form__email {
+    grid-area: email;
+    cursor: text;
+}
+
+.msg__form__message {
+    grid-area: msg;
+    cursor: progress;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    font-family: estedad-regular;
+    font-size: 20px;
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.msg__form__btn {
+    grid-area: btn;
+    width: 183px;
+    height: 40px;
+    position: absolute;
+    bottom: -4rem;
+    left: 0;
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.msg__form__count {
+    font-family: estedad-medium;
+    grid-area: count;
+    text-align: left;
+    line-height: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* SMALL SCREEN FOOTER */
+@media screen and (max-width: 1038px) {
+    .footer__container__msg {
+        display: none;
+    }
+
+    .footer__container {
+        width: 100%;
+    }
+
+    .footer__container .flex-column {
+        align-items: center;
+    }
+
+    .footer__container div h5 {
+        font-size: 15px;
+        line-height: 180%;
+    }
+
+    .footer__container .footer__container__contact span,
+    .footer__container .footer__container__branches span {
+        font-size: 12px;
+    }
+}
+
+/* MAIN */
+#app {
+    min-height: 100vh;
+}
 
 #main-container {
     width: 1024px;
@@ -783,6 +985,7 @@ header {
     justify-content: space-evenly;
     height: 45rem;
     width: 100%;
+    margin-bottom: 3rem;
 }
 
 .branches__container {

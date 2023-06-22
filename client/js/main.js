@@ -11,6 +11,11 @@ const submenuLabel = document.querySelector('#submenu-label');
 const branch = document.getElementById('branch');
 const mobileMenuSubmenu = document.querySelector('#mobile-menu__submenu');
 const app = document.getElementById("app");
+const msgFormMessageTextarea = document.querySelector(".msg__form__message");
+const msgFormFullNameInput = document.querySelector(".msg__form__full-name");
+const msgFormNumberInput = document.querySelector(".msg__form__number");
+const msgFormCount = document.querySelector(".msg__form__count");
+const msgFormBtn = document.querySelector(".msg__form__btn");
 
 // MOBILE MENU
 mobileMenuIcon.addEventListener("click", () => {
@@ -70,4 +75,54 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
     router();
+})
+
+// COUNTING LETTERS OF TEXTAREA IN THE FOOTER AND SHOW
+msgFormMessageTextarea.addEventListener("input", (event) => {
+    const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    const EnDigits = event.target.value.length;
+    const digits = EnDigits.toString().split('');
+    let persianNum = '';
+    digits.forEach(digit => {
+        persianNum += persianDigits[digit];
+        msgFormCount.textContent = `${persianNum}/۲۰۰`;
+    });
+})
+
+// ENABLE BUTTON IN THE FOOTER-FORM WITH CONDITION AND ADD TOOLTIP FOR INPUTS IN THE FOOTER-FORM
+let formInputs = [msgFormMessageTextarea, msgFormFullNameInput, msgFormNumberInput];
+
+formInputs.forEach(value => {
+    value.classList.add('tooltip');
+    let tooltipText = document.createElement('span');
+    tooltipText.style.display = "none";
+    tooltipText.classList.add('tooltipText');
+    tooltipText.textContent = value.title;
+    value.parentNode.insertBefore(tooltipText, value.nextSibling);
+
+    value.addEventListener("keyup", () => {
+        if (msgFormMessageTextarea.value.length > 10 && msgFormFullNameInput.value.length > 3 && msgFormNumberInput.value.length == 11) {
+            msgFormBtn.disabled = false;
+            msgFormBtn.style.cursor = "pointer";
+            msgFormBtn.style.opacity = 1;
+        } else {
+            msgFormBtn.disabled = true;
+            msgFormBtn.style.cursor = "not-allowed";
+            msgFormBtn.style.opacity = 0.2;
+        }
+    })
+})
+
+msgFormBtn.addEventListener("click", (e) => {
+    if (msgFormMessageTextarea.value.length < 0) {
+        msgFormMessageTextarea.placeholder = 'پیام شما*'
+    }
+    if (!msgFormBtn.disabled) {
+        e.preventDefault();
+    }
+    msgFormBtn.classList.add('tooltip');
+    tooltipText.style.display = "none";
+    tooltipText.classList.add('tooltipText');
+    tooltipText.textContent = msgFormBtn.title;
+    msgFormBtn.parentNode.insertBefore(tooltipText, msgFormBtn.nextSibling);
 })
