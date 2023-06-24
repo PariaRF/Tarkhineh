@@ -1,12 +1,18 @@
 const MainPage = () => {
     window.addEventListener("scroll", () => {
-        let container = document.querySelector('.restaurant__menu__content');
+        let restaurantMenuContainer = document.querySelector('.restaurant__menu__content');
+        let branchesContainer = document.querySelector('.branches__container');
+
         const scrollPossition = window.scrollY;
-        const triggerPossition = container.offsetTop / 2;
-        // console.log(scrollPossition, triggerPossition, container.offsetTop, container.offsetHeight);
         if (scrollPossition >= 100) {
-            container.classList.add('showResturantMenuContent');
-            // container.style.opacity = "1";
+            restaurantMenuContainer.classList.add('showContainerMainPage');
+        } else {
+            restaurantMenuContainer.classList.remove('showContainerMainPage');
+        }
+        if (scrollPossition >= 589) {
+            branchesContainer.classList.add('showContainerMainPage');
+        } else {
+            branchesContainer.classList.remove('showContainerMainPage');
         }
     })
     return `

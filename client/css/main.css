@@ -1,5 +1,4 @@
 @import url(./font.css);
-@import url(client/assets/icons/style.css);
 
 *,
 *::before,
@@ -683,9 +682,10 @@ footer {
     justify-content: space-between;
     grid-template-areas: "main appetizer dessert drink";
     opacity: 0;
+    /* transform: translateY(100%); */
 }
 
-.showResturantMenuContent {
+.showContainerMainPage {
     position: relative;
     animation: showContent 2s ease forwards;
     animation-fill-mode: forwards;
@@ -694,10 +694,12 @@ footer {
 @keyframes showContent {
     0% {
         opacity: 0;
+        transform: translateY(20%);
     }
 
     100% {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -777,7 +779,7 @@ footer {
             "dessert drink";
         grid-column-gap: 1.5rem;
         grid-row-gap: 9rem;
-        opacity: 1;
+        opacity: 0;
     }
 
     .h-three {
@@ -977,6 +979,8 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     width: 1024px;
     grid-gap: 10px;
+    opacity: 0;
+    /* transform: translateY(100%); */
 }
 
 .branches__container__card {
