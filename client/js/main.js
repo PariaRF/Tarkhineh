@@ -94,13 +94,20 @@ let formInputs = [msgFormMessageTextarea, msgFormFullNameInput, msgFormNumberInp
 
 formInputs.forEach(value => {
     value.classList.add('tooltip');
-    let tooltipText = document.createElement('span');
-    tooltipText.style.display = "none";
-    tooltipText.classList.add('tooltipText');
-    tooltipText.textContent = value.title;
-    value.parentNode.insertBefore(tooltipText, value.nextSibling);
 
-    value.addEventListener("keyup", () => {
+    value.addEventListener("input", (e) => {
+        // CHECK NUMBER AND CONVERT TO PERSIAN NUMBER
+        if (e.target == msgFormNumberInput) {
+            let regex = /^[^0-9]+$/;
+            if (e.target.value) {
+                if (regex.test(e.target.value)) {
+                    e.target.value = e.target.value.replace(/\b[^0-9]+$\b/g, '');
+                } else {
+                    e.target.value = persianJs(e.target.value).englishNumber().toString();
+                }
+            }
+        }
+
         if (msgFormMessageTextarea.value.length > 10 && msgFormFullNameInput.value.length > 3 && msgFormNumberInput.value.length == 11) {
             msgFormBtn.disabled = false;
             msgFormBtn.style.cursor = "pointer";
@@ -114,15 +121,8 @@ formInputs.forEach(value => {
 })
 
 msgFormBtn.addEventListener("click", (e) => {
-    if (msgFormMessageTextarea.value.length < 0) {
-        msgFormMessageTextarea.placeholder = 'پیام شما*'
-    }
     if (!msgFormBtn.disabled) {
         e.preventDefault();
     }
     msgFormBtn.classList.add('tooltip');
-    tooltipText.style.display = "none";
-    tooltipText.classList.add('tooltipText');
-    tooltipText.textContent = msgFormBtn.title;
-    msgFormBtn.parentNode.insertBefore(tooltipText, msgFormBtn.nextSibling);
 })

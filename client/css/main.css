@@ -141,7 +141,6 @@ header {
 
 .nav__link__item:hover {
     color: var(--primary);
-    font-weight: bold;
 }
 
 .submenu {
@@ -457,6 +456,13 @@ footer {
 .msg__form__number {
     grid-area: number;
     cursor: progress;
+    direction: ltr;
+    text-align: right;
+    letter-spacing: 0.3rem;
+}
+
+.msg__form__number::placeholder {
+    letter-spacing: 0;
 }
 
 .msg__form__email {
@@ -472,26 +478,6 @@ footer {
 .tooltip {
     position: relative;
     display: inline-block;
-}
-
-.tooltip .tooltiptext {
-    font-family: estedad-regular;
-    font-size: 20px;
-    visibility: hidden;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
 }
 
 .msg__form__btn {
@@ -1017,7 +1003,7 @@ footer {
 .branches__container__card__icon {
     position: absolute;
     top: 9rem;
-    left: 10rem;
+    left: 11rem;
     z-index: 9999;
     opacity: 0;
     transform: scale(0);

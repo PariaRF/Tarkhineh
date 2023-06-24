@@ -160,6 +160,7 @@
     </nav>
     <!-- MAIN SECTION -->
     <main id="app">
+
     </main>
     <!-- FOOTER -->
     <footer class="flex-center">
@@ -203,13 +204,17 @@
             <div class="footer__container__msg flex-column">
                 <h5>پیام به ترخینه</h5>
                 <form class="footer__container__msg__form">
-                    <input class="reset msg__form__full-name" minlength="3" maxlength="10" type="text"
-                        placeholder="نام و نام خانوادگی*" title="مقدار این فیلد باید بیشتراز 3 و کمتر از 10 باشد.">
-                    <input class="reset msg__form__number" type="number" minlength="11" placeholder="شماره تماس*"
-                        title="مقدار این فیلد عددی و باید برابر با 11 عدد باشد.">
+                    <input class="reset msg__form__full-name" minlength="3" maxlength="20" type="text"
+                        placeholder="نام و نام خانوادگی*" title="مقدار این فیلد باید بیشتراز 3 و کمتر از 20 باشد.">
+
+                    <input class="reset msg__form__number" maxlength="11" placeholder="*شماره تماس"
+                        title="مقدار این فیلد باید عددی و 11 رقم باشد.">
+
                     <input class="reset msg__form__email" type="text" placeholder="آدرس ایمیل (اختیاری)">
+
                     <textarea class="reset msg__form__message" maxlength="200" placeholder="پیام شما*"
                         title="پیام شما باید حداقل 10 کاراکتر و حداکثر 200 کاراکتر باشد."></textarea>
+
                     <span class="reset text-body msg__form__count">۰/۲۰۰</span>
                     <button class="reset msg__form__btn"
                         title="هر سه فیلد اجباری باید طبق قوانین خود پر شوند تا ارسال پیام فعال گردد.">ارسال
@@ -218,6 +223,7 @@
             </div>
         </div>
     </footer>
+    <script src="client/js/library/persian.min.js"></script>
     <script type="module" src="client/js/main.js"></script>
 </body>
 
