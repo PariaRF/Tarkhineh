@@ -44,8 +44,6 @@
     --warning: #A9791C;
     --warning-light: #F4B740;
     --warning-extera-light: #FFF8E1;
-    --Iconsax-Size: 1.75rem;
-    --Iconsax-Color: #417f56;
 }
 
 html {
@@ -859,7 +857,7 @@ footer {
     margin-bottom: 1.5rem;
     color: white;
     display: flex;
-    padding: 2rem 10.5rem;
+    padding: 2rem 3.5rem;
     justify-content: center;
 }
 
@@ -1152,7 +1150,7 @@ footer {
     }
 
     .branches__container {
-        width: 80%;
+        width: 100%;
     }
 
     .branches__container__card {

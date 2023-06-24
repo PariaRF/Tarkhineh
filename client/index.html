@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="//glenthemes.github.io/iconsax/geticons.js"></script>
-    <link href="//glenthemes.github.io/iconsax/style.css" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="client/assets/icons/Tarkhineh.ico">
     <link rel="stylesheet" href="client/css/main.css">
     <title>Tarkhineh | رستوران زنجیره ای</title>
@@ -17,7 +14,20 @@
     <header class="flex-around">
         <div class="header__container flex-around">
             <button id="mobile-menu-icon" class="flex-center reset hidden">
-                <i class="iconsax" icon-name="menu-hamburger"></i>
+                <i class="iconsax">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21 7.75H3C2.59 7.75 2.25 7.41 2.25 7C2.25 6.59 2.59 6.25 3 6.25H21C21.41 6.25 21.75 6.59 21.75 7C21.75 7.41 21.41 7.75 21 7.75Z"
+                            fill="#417F56" />
+                        <path
+                            d="M21 12.75H3C2.59 12.75 2.25 12.41 2.25 12C2.25 11.59 2.59 11.25 3 11.25H21C21.41 11.25 21.75 11.59 21.75 12C21.75 12.41 21.41 12.75 21 12.75Z"
+                            fill="#417F56" />
+                        <path
+                            d="M21 17.75H3C2.59 17.75 2.25 17.41 2.25 17C2.25 16.59 2.59 16.25 3 16.25H21C21.41 16.25 21.75 16.59 21.75 17C21.75 17.41 21.41 17.75 21 17.75Z"
+                            fill="#417F56" />
+                    </svg>
+
+                </i>
             </button>
             <img class="header__logo" src="client/assets/images/Logo-tarkhine.svg" alt="Tarkhineh-logo">
             <nav id="menu" class="flex-center">
@@ -80,13 +90,47 @@
             </nav>
             <div class="header__icons flex-center">
                 <button id="search-icon" class="flex-center reset">
-                    <i class="iconsax" icon-name="search-normal-2"></i>
+                    <i class="iconsax">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+                                stroke="#417F56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M22 22L20 20" stroke="#417F56" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </i>
                 </button>
                 <button class="flex-center reset">
-                    <i class="iconsax" icon-name="shopping-cart"></i>
+                    <i class="iconsax">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18.19 17.75H7.53999C6.54999 17.75 5.59999 17.33 4.92999 16.6C4.25999 15.87 3.92 14.89 4 13.9L4.83 3.94C4.86 3.63 4.74999 3.33001 4.53999 3.10001C4.32999 2.87001 4.04 2.75 3.73 2.75H2C1.59 2.75 1.25 2.41 1.25 2C1.25 1.59 1.59 1.25 2 1.25H3.74001C4.47001 1.25 5.15999 1.56 5.64999 2.09C5.91999 2.39 6.12 2.74 6.23 3.13H18.72C19.73 3.13 20.66 3.53 21.34 4.25C22.01 4.98 22.35 5.93 22.27 6.94L21.73 14.44C21.62 16.27 20.02 17.75 18.19 17.75ZM6.28 4.62L5.5 14.02C5.45 14.6 5.64 15.15 6.03 15.58C6.42 16.01 6.95999 16.24 7.53999 16.24H18.19C19.23 16.24 20.17 15.36 20.25 14.32L20.79 6.82001C20.83 6.23001 20.64 5.67001 20.25 5.26001C19.86 4.84001 19.32 4.60999 18.73 4.60999H6.28V4.62Z"
+                                fill="#417F56" />
+                            <path
+                                d="M16.25 22.75C15.15 22.75 14.25 21.85 14.25 20.75C14.25 19.65 15.15 18.75 16.25 18.75C17.35 18.75 18.25 19.65 18.25 20.75C18.25 21.85 17.35 22.75 16.25 22.75ZM16.25 20.25C15.97 20.25 15.75 20.47 15.75 20.75C15.75 21.03 15.97 21.25 16.25 21.25C16.53 21.25 16.75 21.03 16.75 20.75C16.75 20.47 16.53 20.25 16.25 20.25Z"
+                                fill="#417F56" />
+                            <path
+                                d="M8.25 22.75C7.15 22.75 6.25 21.85 6.25 20.75C6.25 19.65 7.15 18.75 8.25 18.75C9.35 18.75 10.25 19.65 10.25 20.75C10.25 21.85 9.35 22.75 8.25 22.75ZM8.25 20.25C7.97 20.25 7.75 20.47 7.75 20.75C7.75 21.03 7.97 21.25 8.25 21.25C8.53 21.25 8.75 21.03 8.75 20.75C8.75 20.47 8.53 20.25 8.25 20.25Z"
+                                fill="#417F56" />
+                            <path
+                                d="M21 8.75H9C8.59 8.75 8.25 8.41 8.25 8C8.25 7.59 8.59 7.25 9 7.25H21C21.41 7.25 21.75 7.59 21.75 8C21.75 8.41 21.41 8.75 21 8.75Z"
+                                fill="#417F56" />
+                        </svg>
+
+                    </i>
                 </button>
                 <button class="flex-center reset">
-                    <i class="iconsax" icon-name="user-2"></i>
+                    <i class="iconsax">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+                                stroke="#417F56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M20.5899 22C20.5899 18.13 16.7399 15 11.9999 15C7.25991 15 3.40991 18.13 3.40991 22"
+                                stroke="#417F56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                    </i>
                 </button>
             </div>
         </div>
@@ -96,7 +140,17 @@
         <ul class="mobile-menu__nav flex-center body-md">
             <li class="mobile-menu__header flex-around">
                 <button class="flex-center reset mobile-menu__close">
-                    <i class="iconsax" icon-name="close-circle"></i>
+                    <i class="iconsax">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M9.16998 14.83L14.83 9.17004" stroke="#ffffff" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M14.83 14.83L9.16998 9.17004" stroke="#ffffff" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </i>
                 </button>
                 <img src="client/assets/images/Logo-tarkhine.svg" alt="Tarkhineh-logo">
             </li>
