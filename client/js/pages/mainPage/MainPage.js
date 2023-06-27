@@ -1,9 +1,39 @@
+import ModalOfBranches from "./components/ModalOfBranches.js";
+
 const MainPage = () => {
+
     window.addEventListener("scroll", () => {
-        let restaurantMenuContainer = document.querySelector('.restaurant__menu__content');
-        let branchesContainer = document.querySelector('.branches__container');
+        const openModalBranches = document.querySelectorAll('.open-modal-branches');
+        const branchesModalBackdrop = document.querySelector(".branches-modal-backdrop");
+        const restaurantMenuContainer = document.querySelector('.restaurant__menu__content');
+        const branchesContainer = document.querySelector('.branches__container');
+        const branchesModalContainer = document.querySelector('.branches-modal-container');
+        const body = document.getElementsByTagName("body");
+
+        openModalBranches.forEach(openModalIcon => {
+            openModalIcon.addEventListener("click", () => {
+                openModalBranches.onclick = ModalOfBranches.openModal;
+                body[0].style.overflowY = "hidden";
+                branchesModalBackdrop.style.visibility = "visible";
+                branchesModalBackdrop.style.transform = "scale(1)";
+                branchesModalContainer.style.position = "fixed";
+                branchesModalContainer.style.visibility = "visible";
+                branchesModalContainer.style.transform = "scale(1)";
+                branchesModalContainer.innerHTML = ModalOfBranches.openModal();
+            })
+        })
+
+
+        branchesModalBackdrop.addEventListener("click", () => {
+            branchesModalBackdrop.style.transform = "scale(0)";
+            branchesModalBackdrop.style.visibility = "hidden";
+            branchesModalContainer.style.transform = "scale(0)";
+            branchesModalContainer.style.visibility = "hidden";
+            body[0].style.overflowY = "auto";
+        })
 
         const scrollPossition = window.scrollY;
+
         if (scrollPossition >= 100) {
             restaurantMenuContainer.classList.add('showContainerMainPage');
         } else {
@@ -14,7 +44,7 @@ const MainPage = () => {
         } else {
             branchesContainer.classList.remove('showContainerMainPage');
         }
-    })
+    });
     return `
         <div id="slider" class="body-text body-xl">
             <div class="slider__header flex-center">            
@@ -134,7 +164,7 @@ const MainPage = () => {
             <div class="branches__container flex-center">
                 <div class="flex-center branches__container__card">
                     <img class="branches__container__card__img" src="client/assets/images/branches/Ekbatan.webp"/>
-                    <i class="branches__container__card__icon">
+                    <i class="branches__container__card__icon open-modal-branches" id="ekbatan-branch-button">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -158,7 +188,7 @@ const MainPage = () => {
                 </div>
                 <div class="flex-center branches__container__card">
                     <img class="branches__container__card__img" src="client/assets/images/branches/Chalus-.webp"/>
-                    <i class="branches__container__card__icon">
+                    <i class="branches__container__card__icon open-modal-branches">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -182,7 +212,7 @@ const MainPage = () => {
                 </div>
                 <div class="flex-center branches__container__card">
                     <img class="branches__container__card__img" src="client/assets/images/branches/Aghdasieh.webp"/>
-                    <i class="branches__container__card__icon">
+                    <i class="branches__container__card__icon open-modal-branches">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -206,7 +236,7 @@ const MainPage = () => {
                 </div>
                 <div class="flex-center branches__container__card">
                     <img class="branches__container__card__img" src="client/assets/images/branches/Vanak.webp"/>
-                    <i class="branches__container__card__icon">
+                    <i class="branches__container__card__icon open-modal-branches">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -230,6 +260,8 @@ const MainPage = () => {
                 </div>
             </div>
         </div>
+        <div class="branches-modal-backdrop"></div>
+        <div class="branches-modal-container"></div>
         `;
 };
 

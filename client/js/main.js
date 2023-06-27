@@ -1,6 +1,6 @@
 import AboutUs from "./pages/AboutUs.js";
 import ContactUs from "./pages/ContactUs.js";
-import MainPage from "./pages/MainPage.js";
+import MainPage from "./pages/mainPage/MainPage.js";
 import Menu from "./pages/Menu.js";
 import Representation from "./pages/Representation.js";
 

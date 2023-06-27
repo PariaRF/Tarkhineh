@@ -1004,12 +1004,33 @@ footer {
 
 .branches__container__card__icon {
     position: absolute;
-    top: 9rem;
-    left: 11rem;
+    top: 8rem;
+    left: 10rem;
     z-index: 9999;
     opacity: 0;
     transform: scale(0);
     transition: all 0.5s ease-in;
+    width: 3.75rem;
+    height: 3.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.branches__container__card__icon:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.branches__container__card__icon svg:hover {
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+}
+
+.branches__container__card__icon svg:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 0.5rem;
 }
 
 .branches__container__card::before {
@@ -1162,4 +1183,119 @@ footer {
         height: 100px;
     }
 
+}
+
+/* MODAL BRANCHES */
+
+.branches-modal-backdrop {
+    width: 100vw;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    backdrop-filter: blur(3px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    transform: scale(0);
+    transition: all 1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.branches-modal-backdrop:hover {
+    cursor: pointer;
+}
+
+.branches-modal-container {
+    z-index: 999;
+    top: 15%;
+    left: 15%;
+    right: 28%;
+    bottom: 15%;
+}
+
+.branches-modal {
+    background-size: cover;
+    background-position: center;
+    width: 636px;
+    height: 435px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 5rem 2rem 5rem;
+    transform: scale(0);
+    transition: all 1.5s ease-in-out;
+}
+
+.branches-modal img {
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    margin: 1rem;
+}
+
+.branches-modal img:hover {
+    cursor: pointer;
+}
+
+.branches-modal .active {
+    display: block;
+}
+
+.branches-modal .active-item {
+    border: 1px solid #fff;
+}
+
+.branches-modal__container {
+    display: flex;
+    background: linear-gradient(179deg, #0006 0%, rgb(0 0 0 / 34%) 76.56%);
+    border-radius: 8px;
+    box-shadow: 0px 6px 6px 1px #00000096;
+}
+
+@media screen and (max-width: 1194px) {
+    .branches-modal-container {
+        right: 23%;
+    }
+}
+
+@media screen and (max-width: 1122px) {
+    .branches-modal-container {
+        right: 18%;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .branches-modal {
+        width: 320px;
+        height: 352px;
+    }
+
+    .branches-modal-container {
+        right: 31%;
+    }
+
+    .branches-modal img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .branches-modal-container {
+        right: 28%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .branches-modal-container {
+        top: 28%;
+        left: 10%;
+        right: 10%;
+        bottom: 28%;
+    }
 }
