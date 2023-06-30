@@ -9,6 +9,7 @@ const MainPage = () => {
         const branchesContainer = document.querySelector('.branches__container');
         const branchesModalContainer = document.querySelector('.branches-modal-container');
         const body = document.getElementsByTagName("body");
+        let branchesModalCloseIcon;
 
         openModalBranches.forEach(openModalIcon => {
             openModalIcon.addEventListener("click", () => {
@@ -20,17 +21,21 @@ const MainPage = () => {
                 branchesModalContainer.style.visibility = "visible";
                 branchesModalContainer.style.transform = "scale(1)";
                 branchesModalContainer.innerHTML = ModalOfBranches.openModal();
+                branchesModalCloseIcon = document.querySelector('.branches-modal__close-icon');
+                branchesModalCloseIcon.addEventListener("click", closeModalBranches)
             })
         })
 
 
-        branchesModalBackdrop.addEventListener("click", () => {
+        branchesModalBackdrop.addEventListener("click", closeModalBranches)
+
+        function closeModalBranches() {
             branchesModalBackdrop.style.transform = "scale(0)";
             branchesModalBackdrop.style.visibility = "hidden";
             branchesModalContainer.style.transform = "scale(0)";
             branchesModalContainer.style.visibility = "hidden";
             body[0].style.overflowY = "auto";
-        })
+        }
 
         const scrollPossition = window.scrollY;
 

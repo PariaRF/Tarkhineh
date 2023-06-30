@@ -1211,9 +1211,12 @@ footer {
 .branches-modal-container {
     z-index: 999;
     top: 15%;
-    left: 15%;
+    left: 29%;
     right: 28%;
     bottom: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .branches-modal {
@@ -1248,6 +1251,7 @@ footer {
 
 .branches-modal .active-item {
     border: 1px solid #fff;
+    transform: scale(1.1);
 }
 
 .branches-modal__container {
@@ -1255,6 +1259,16 @@ footer {
     background: linear-gradient(179deg, #0006 0%, rgb(0 0 0 / 34%) 76.56%);
     border-radius: 8px;
     box-shadow: 0px 6px 6px 1px #00000096;
+}
+
+.branches-modal__close-icon {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.branches-modal__close-icon:hover {
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1194px) {
