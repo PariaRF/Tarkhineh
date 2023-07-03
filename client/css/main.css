@@ -339,6 +339,104 @@ header {
     }
 }
 
+/* DESKTOP SEARCH MODAL */
+.search-container {
+    position: fixed;
+    top: 33%;
+    right: 29%;
+    left: 29%;
+    bottom: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -9;
+}
+
+.search-modal {
+    background-color: #fff;
+    width: 60rem;
+    height: 25rem;
+    border-radius: 8px;
+    overflow: hidden;
+    visibility: hidden;
+    transform: scale(0);
+    transition: all 1.5s ease-in-out;
+    z-index: 9;
+}
+
+.search-modal__header {
+    background-color: var(--gray-three);
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    height: 7rem;
+}
+
+.search-modal__header span {
+    flex: 1;
+    text-align: center;
+    font-size: 20px;
+    font-family: estedad-regular;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 180%;
+}
+
+.search-modal__header i:hover {
+    cursor: pointer;
+}
+
+.search-modal__body {
+    height: 67%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-modal__body span {
+    color: var(--gray-eight);
+    font-family: estedad-medium;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 180%;
+    margin-bottom: 1.5rem;
+}
+
+.search-modal__body .search-box-container {
+    border: 1px solid var(--gray-four);
+    display: flex;
+    width: 409px;
+    height: 40px;
+    padding: 0 0 0 16px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.search-modal__body input {
+    color: var(--gray-eight);
+    height: 100%;
+    cursor: text;
+    white-space: nowrap;
+    font-size: 13px;
+    font-family: estedad-medium;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 180%;
+    flex: 1;
+    padding-right: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .search-container {
+        display: none;
+    }
+}
+
+
 /* DESKTOP FOOTER */
 footer {
     height: 30.9rem;
@@ -1187,7 +1285,7 @@ footer {
 
 /* MODAL BRANCHES */
 
-.branches-modal-backdrop {
+.backdrop-modal {
     width: 100vw;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
     backdrop-filter: blur(3px);
@@ -1204,7 +1302,7 @@ footer {
     visibility: hidden;
 }
 
-.branches-modal-backdrop:hover {
+.backdrop-modal:hover {
     cursor: pointer;
 }
 
@@ -1303,6 +1401,7 @@ footer {
     .branches-modal-container {
         right: 28%;
     }
+
 }
 
 @media screen and (max-width: 576px) {

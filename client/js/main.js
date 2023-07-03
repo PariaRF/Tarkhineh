@@ -8,7 +8,6 @@ const mobileMenuIcon = document.getElementById('mobile-menu-icon');
 const mobileMenuClose = document.querySelector('.mobile-menu__close');
 const mobileMenu = document.getElementById('mobile-menu');
 const submenuLabel = document.querySelector('#submenu-label');
-const branch = document.getElementById('branch');
 const mobileMenuSubmenu = document.querySelector('#mobile-menu__submenu');
 const app = document.getElementById("app");
 const msgFormMessageTextarea = document.querySelector(".msg__form__message");
@@ -16,6 +15,12 @@ const msgFormFullNameInput = document.querySelector(".msg__form__full-name");
 const msgFormNumberInput = document.querySelector(".msg__form__number");
 const msgFormCount = document.querySelector(".msg__form__count");
 const msgFormBtn = document.querySelector(".msg__form__btn");
+const searchIcon = document.querySelector("#search-icon");
+const backdropModal = document.querySelector('.backdrop-modal');
+const searchModal = document.querySelector(".search-modal");
+const searchModalCloseIcon = document.querySelector(".search-modal__close-icon");
+const searchContainer = document.querySelector(".search-container");
+const body = document.getElementsByTagName("body");
 
 // MOBILE MENU
 mobileMenuIcon.addEventListener("click", () => {
@@ -126,3 +131,26 @@ msgFormBtn.addEventListener("click", (e) => {
     }
     msgFormBtn.classList.add('tooltip');
 })
+
+// SEARCH MODAL
+searchIcon.addEventListener("click", () => {
+    body[0].style.overflowY = "hidden";
+    searchContainer.style.zIndex = "9";
+    backdropModal.style.visibility = "visible";
+    backdropModal.style.transform = "scale(1)";
+    searchModal.style.visibility = "visible";
+    searchModal.style.transform = "scale(1)";
+})
+
+backdropModal.addEventListener("click", closeModalSearch);
+searchModalCloseIcon.addEventListener("click", closeModalSearch);
+
+function closeModalSearch() {
+    backdropModal.style.visibility = "hidden";
+    backdropModal.style.transform = "scale(0)";
+    searchModal.style.visibility = "hidden";
+    searchModal.style.transform = "scale(0)";
+    searchModal.style.transition = "all 1s ease-in-out";
+    body[0].style.overflowY = "auto";
+    searchContainer.style.zIndex = "-9";
+}

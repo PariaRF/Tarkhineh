@@ -217,6 +217,38 @@
     <main id="app">
 
     </main>
+    <!--SEARCH MODAL -->
+    <div class="backdrop-modal"></div>
+    <div class="search-container">
+        <div class="search-modal">
+            <div class="search-modal__header">
+                <span class="h-six">جستجو</span>
+                <i class="search-modal__close-icon">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="3.72611" height="29.8089" rx="1.86305"
+                            transform="matrix(0.698447 -0.715662 0.698447 0.715662 8.45508 11.667)" fill="#717171" />
+                        <rect width="3.72611" height="29.8089" rx="1.86305"
+                            transform="matrix(0.698447 0.715662 -0.698447 0.715662 28.6973 9.00049)" fill="#717171" />
+                    </svg>
+                </i>
+            </div>
+            <div class="search-modal__body">
+                <span>لطفا متن خود را تایپ و سپس دکمه Enter را بزنید.</span>
+                <div class="search-box-container">
+                    <input class="reset" type="text" placeholder="جستجو">
+                    <i>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+                                stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M22 22L20 20" stroke="#292D32" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </i>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- FOOTER -->
     <footer class="flex-center">
         <div class="footer__container">
@@ -278,6 +310,7 @@
             </div>
         </div>
     </footer>
+
     <script src="client/js/library/persian.min.js"></script>
     <script type="module" src="client/js/main.js"></script>
 </body>

@@ -4,12 +4,11 @@ const MainPage = () => {
 
     window.addEventListener("scroll", () => {
         const openModalBranches = document.querySelectorAll('.open-modal-branches');
-        const branchesModalBackdrop = document.querySelector(".branches-modal-backdrop");
+        const branchesModalBackdrop = document.querySelector(".backdrop-modal");
         const restaurantMenuContainer = document.querySelector('.restaurant__menu__content');
         const branchesContainer = document.querySelector('.branches__container');
         const branchesModalContainer = document.querySelector('.branches-modal-container');
         const body = document.getElementsByTagName("body");
-        let branchesModalCloseIcon;
 
         openModalBranches.forEach(openModalIcon => {
             openModalIcon.addEventListener("click", () => {
@@ -21,11 +20,10 @@ const MainPage = () => {
                 branchesModalContainer.style.visibility = "visible";
                 branchesModalContainer.style.transform = "scale(1)";
                 branchesModalContainer.innerHTML = ModalOfBranches.openModal();
-                branchesModalCloseIcon = document.querySelector('.branches-modal__close-icon');
+                const branchesModalCloseIcon = document.querySelector('.branches-modal__close-icon');
                 branchesModalCloseIcon.addEventListener("click", closeModalBranches)
             })
         })
-
 
         branchesModalBackdrop.addEventListener("click", closeModalBranches)
 
@@ -50,6 +48,7 @@ const MainPage = () => {
             branchesContainer.classList.remove('showContainerMainPage');
         }
     });
+
     return `
         <div id="slider" class="body-text body-xl">
             <div class="slider__header flex-center">            
@@ -265,7 +264,7 @@ const MainPage = () => {
                 </div>
             </div>
         </div>
-        <div class="branches-modal-backdrop"></div>
+        <div class="backdrop-modal"></div>
         <div class="branches-modal-container"></div>
         `;
 };
