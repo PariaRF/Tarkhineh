@@ -35,6 +35,13 @@ mobileMenuClose.addEventListener("click", () => {
 
 submenuLabel.addEventListener("click", () => {
     mobileMenuSubmenu.classList.toggle('mobile-menu__submenu');
+    if (mobileMenuSubmenu.classList.contains('mobile-menu__submenu')) {
+        setTimeout(() => {
+            mobileMenuSubmenu.parentElement.style.display = "flex";
+        }, 1000);
+    } else {
+        mobileMenuSubmenu.parentElement.style.display = "block";
+    }
 })
 
 // SPA
