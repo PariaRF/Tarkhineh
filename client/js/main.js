@@ -2,6 +2,7 @@ import AboutUs from "./pages/AboutUs.js";
 import ContactUs from "./pages/ContactUs.js";
 import MainPage from "./pages/mainPage/MainPage.js";
 import Menu from "./pages/Menu.js";
+import NotFountRearchResult from "./pages/NotFountRearchResult.js";
 import Representation from "./pages/Representation.js";
 
 const mobileMenuIcon = document.getElementById('mobile-menu-icon');
@@ -20,6 +21,7 @@ const backdropModal = document.querySelector('.backdrop-modal');
 const searchModal = document.querySelector(".search-modal");
 const searchModalCloseIcon = document.querySelector(".search-modal__close-icon");
 const searchContainer = document.querySelector(".search-container");
+const searchInMenu = document.querySelector('#search-in-menu');
 const body = document.getElementsByTagName("body");
 
 // MOBILE MENU
@@ -52,6 +54,7 @@ function router(params) {
         { path: "/representation", view: Representation },
         { path: "/aboutus", view: AboutUs },
         { path: "/contactus", view: ContactUs },
+        { path: "/notfoundsearchresult", view: NotFountRearchResult.renderNotFoundSearchResult },
     ];
 
     const potentialRoutes = routes.map((route) => {
@@ -87,6 +90,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
     router();
+})
+
+// CHANGE ROUTE ON SEARCH RESULT THAT NOT FOUND
+searchInMenu.addEventListener("keydown", (e) => {
+    if (e.code === "Enter" || e.code === "NumpadEnter") {
+        localStorage.setItem("searchValue", searchInMenu.value);
+        closeModalSearch();
+        e.preventDefault();
+        let newUrl = "http://localhost:5000/notfoundsearchresult";
+        setTimeout(() => {
+            window.history.pushState(null, null, newUrl);
+            router();
+        }, 600);
+    }
 })
 
 // COUNTING LETTERS OF TEXTAREA IN THE FOOTER AND SHOW

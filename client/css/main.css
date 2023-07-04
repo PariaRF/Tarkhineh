@@ -800,7 +800,6 @@ footer {
     justify-content: space-between;
     grid-template-areas: "main appetizer dessert drink";
     opacity: 0;
-    /* transform: translateY(100%); */
 }
 
 .showContainerMainPage {
@@ -947,6 +946,12 @@ footer {
     .search-box svg {
         width: 16px;
         height: 16px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .restaurant__menu__content {
+        opacity: 1;
     }
 }
 
@@ -1430,5 +1435,68 @@ footer {
         left: 10%;
         right: 10%;
         bottom: 28%;
+    }
+}
+
+/* NOT FOUND SEARCH RESUALT */
+.not-found-search-container {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 500px;
+}
+
+.not-found-search-container span {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 180%;
+}
+
+.search-box-not-found-container {
+    display: flex;
+    width: 392px;
+    height: 40px;
+    padding: 0px 16px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--gray-four);
+    cursor: not-allowed;
+}
+
+.search-box-not-found-container input {
+    flex: 1;
+    height: 100%;
+    cursor: not-allowed;
+    font-family: estedad-medium;
+}
+
+.not-found-search-container img {
+    width: 382px;
+    height: 359px;
+}
+
+@media screen and (max-width: 490px) {
+    .not-found-search-container {
+        padding: 0 3rem;
+        max-width: 360px;
+        height: 423px;
+        margin: auto;
+    }
+
+    .search-box-not-found-container {
+        width: 100%;
+    }
+
+    .not-found-search-container img {
+        width: 100%;
+        height: 26.9rem;
+    }
+
+    #app {
+        min-height: auto;
     }
 }

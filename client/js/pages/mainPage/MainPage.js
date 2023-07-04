@@ -36,16 +36,17 @@ const MainPage = () => {
         }
 
         const scrollPossition = window.scrollY;
-
-        if (scrollPossition >= 100) {
-            restaurantMenuContainer.classList.add('showContainerMainPage');
-        } else {
-            restaurantMenuContainer.classList.remove('showContainerMainPage');
-        }
-        if (scrollPossition >= 589) {
-            branchesContainer.classList.add('showContainerMainPage');
-        } else {
-            branchesContainer.classList.remove('showContainerMainPage');
+        if (window.location.href === "http://localhost:5000/") {
+            if (scrollPossition >= 100) {
+                restaurantMenuContainer.classList.add('showContainerMainPage');
+            } else {
+                restaurantMenuContainer.classList.remove('showContainerMainPage');
+            }
+            if (scrollPossition >= 589) {
+                branchesContainer.classList.add('showContainerMainPage');
+            } else {
+                branchesContainer.classList.remove('showContainerMainPage');
+            }
         }
     });
 
