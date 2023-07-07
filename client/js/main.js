@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 searchInMenu.addEventListener("keydown", (e) => {
     if (e.code === "Enter" || e.code === "NumpadEnter") {
         if (e.target.value == "پاستا") {
+            e.target.value = "";
             closeModalSearch();
             e.preventDefault();
             let newUrl = "http://localhost:5000/searchresult";
@@ -108,6 +109,7 @@ searchInMenu.addEventListener("keydown", (e) => {
             }, 600);
         } else {
             localStorage.setItem("searchValue", searchInMenu.value);
+            e.target.value = "";
             closeModalSearch();
             e.preventDefault();
             let newUrl = "http://localhost:5000/notfoundsearchresult";
