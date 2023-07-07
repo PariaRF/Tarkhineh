@@ -4,6 +4,7 @@ import MainPage from "./pages/mainPage/MainPage.js";
 import Menu from "./pages/Menu.js";
 import NotFountRearchResult from "./pages/NotFountRearchResult.js";
 import Representation from "./pages/Representation.js";
+import SearchResualt from "./pages/searchResualtPage/SearchResualt.js";
 
 const mobileMenuIcon = document.getElementById('mobile-menu-icon');
 const mobileMenuClose = document.querySelector('.mobile-menu__close');
@@ -55,6 +56,7 @@ function router(params) {
         { path: "/aboutus", view: AboutUs },
         { path: "/contactus", view: ContactUs },
         { path: "/notfoundsearchresult", view: NotFountRearchResult.renderNotFoundSearchResult },
+        { path: "/searchresult", view: SearchResualt.SearchResultPage },
     ];
 
     const potentialRoutes = routes.map((route) => {
@@ -90,19 +92,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
     router();
+    // SearchResualt.createCards();
 })
 
-// CHANGE ROUTE ON SEARCH RESULT THAT NOT FOUND
+// CHANGE ROUTE ON SEARCH RESULT
 searchInMenu.addEventListener("keydown", (e) => {
     if (e.code === "Enter" || e.code === "NumpadEnter") {
-        localStorage.setItem("searchValue", searchInMenu.value);
-        closeModalSearch();
-        e.preventDefault();
-        let newUrl = "http://localhost:5000/notfoundsearchresult";
-        setTimeout(() => {
-            window.history.pushState(null, null, newUrl);
-            router();
-        }, 600);
+        if (e.target.value == "پاستا") {
+            closeModalSearch();
+            e.preventDefault();
+            let newUrl = "http://localhost:5000/searchresult";
+            setTimeout(() => {
+                window.history.pushState(null, null, newUrl);
+                router();
+            }, 600);
+        } else {
+            localStorage.setItem("searchValue", searchInMenu.value);
+            closeModalSearch();
+            e.preventDefault();
+            let newUrl = "http://localhost:5000/notfoundsearchresult";
+            setTimeout(() => {
+                window.history.pushState(null, null, newUrl);
+                router();
+            }, 600);
+        }
+
     }
 })
 

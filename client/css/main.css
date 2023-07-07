@@ -1455,7 +1455,7 @@ footer {
     line-height: 180%;
 }
 
-.search-box-not-found-container {
+.search-box-result {
     display: flex;
     width: 392px;
     height: 40px;
@@ -1467,7 +1467,7 @@ footer {
     cursor: not-allowed;
 }
 
-.search-box-not-found-container input {
+.search-box-result input {
     flex: 1;
     height: 100%;
     cursor: not-allowed;
@@ -1487,7 +1487,7 @@ footer {
         margin: auto;
     }
 
-    .search-box-not-found-container {
+    .search-box-result {
         width: 100%;
     }
 
@@ -1498,5 +1498,140 @@ footer {
 
     #app {
         min-height: auto;
+    }
+}
+
+/* FOUNDED SEARCH RESUALT */
+.search-result__header {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 11rem;
+}
+
+.search-result__header h1 strong {
+    color: var(--primary);
+}
+
+.main-courses-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.main-courses-container__cards {
+    width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-courses-card {
+    display: flex;
+    flex-direction: column;
+    height: 41.7rem;
+    width: 28rem;
+    border-radius: 8px;
+    border: 1px solid var(--gray-four);
+    background: var(--white);
+}
+
+.main-courses-card__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-courses-card h3 {
+    text-align: center;
+    color: var(--gray-eight);
+    font-size: 2rem;
+    font-family: estedad-bold;
+}
+
+.main-courses-card__info {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.6rem;
+}
+
+.main-courses-card__info__text {
+    color: var(--gray-five);
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-family: estedad-regular;
+    margin-right: 0.5rem;
+}
+
+.main-courses-card__info__price {
+    display: grid;
+    grid-template-areas:
+        "discount orgprice"
+        "discountedprice discountedprice";
+    font-size: 1.25rem;
+}
+
+.card__info__price__org-price {
+    text-decoration: line-through;
+    color: var(--gray-five);
+}
+
+.card__info__price__discount {
+    color: var(--error);
+}
+
+.card__info__price__discounted-price {
+    font-size: 1.6rem;
+    grid-area: discountedprice;
+}
+
+.main-courses-card__info__action__card {
+    display: flex;
+    align-items: center;
+}
+
+.main-courses-card__btn {
+    margin: 0 1.6rem;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary);
+    color: white;
+    border-radius: 4px;
+    font-family: estedad-bold;
+}
+
+@media screen and (max-width: 1077px) {
+    .main-courses-container__cards {
+        flex-direction: column;
+    }
+
+    .main-courses-card {
+        margin: 1rem;
+        width: 39.2rem;
+        height: auto;
+    }
+
+    .main-courses-card__body {
+        padding-bottom: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .search-box-result {
+        width: 87%;
+    }
+
+    .main-courses-card {
+        width: 89%;
+    }
+
+    .search-result__header h1 {
+        font-size: 1.75rem;
     }
 }
