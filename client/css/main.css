@@ -173,11 +173,46 @@ header {
 }
 
 #menu-item .submenu .submenu__item {
-    padding: 0.5rem;
+    padding: 1rem;
+    margin-top: 0;
     border-bottom: 1px solid var(--gray-three);
 }
 
 #menu-item .submenu .submenu__item:last-child {
+    border-bottom: none;
+}
+
+#user-submenu {
+    width: 3.2rem;
+}
+
+#user-submenu:hover .submenu {
+    visibility: visible;
+}
+
+#user-submenu .submenu {
+    width: 15rem;
+    padding: 0 0.5rem 0 0.5rem;
+}
+
+#user-submenu .submenu .submenu__item__img {
+    width: 1rem;
+    height: 2rem;
+}
+
+#user-submenu .submenu .submenu__item__info {
+    margin-right: 0.5rem;
+}
+
+#user-submenu .submenu .submenu__item {
+    font-family: estedad-regular;
+    display: flex;
+    padding: 1rem;
+    margin-top: 0;
+    border-bottom: 1px solid var(--gray-three);
+}
+
+#user-submenu .submenu .submenu__item:last-child {
     border-bottom: none;
 }
 
