@@ -149,6 +149,7 @@ header {
     padding: 2rem;
     width: 50rem;
     z-index: 99;
+    box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.15);
 }
 
 #branch:hover .submenu {
@@ -179,40 +180,6 @@ header {
 }
 
 #menu-item .submenu .submenu__item:last-child {
-    border-bottom: none;
-}
-
-#user-submenu {
-    width: 3.2rem;
-}
-
-#user-submenu:hover .submenu {
-    visibility: visible;
-}
-
-#user-submenu .submenu {
-    width: 15rem;
-    padding: 0 0.5rem 0 0.5rem;
-}
-
-#user-submenu .submenu .submenu__item__img {
-    width: 1rem;
-    height: 2rem;
-}
-
-#user-submenu .submenu .submenu__item__info {
-    margin-right: 0.5rem;
-}
-
-#user-submenu .submenu .submenu__item {
-    font-family: estedad-regular;
-    display: flex;
-    padding: 1rem;
-    margin-top: 0;
-    border-bottom: 1px solid var(--gray-three);
-}
-
-#user-submenu .submenu .submenu__item:last-child {
     border-bottom: none;
 }
 
@@ -273,6 +240,7 @@ header {
 }
 
 .header__icons button {
+    position: relative;
     background-color: var(--tint-one);
     padding: 0.8rem;
     border-radius: 4px;
@@ -591,8 +559,7 @@ footer {
 .footer__container__msg__form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "name msg"
+    grid-template-areas: "name msg"
         "number msg"
         "email msg"
         ". count"
@@ -712,8 +679,7 @@ footer {
 /* MAIN PAHGE */
 #slider {
     height: 35rem;
-    background-image:
-        linear-gradient(0deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)),
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)),
         linear-gradient(0deg, rgb(33 64 43 / 0%), rgb(33 64 43 / 0%)),
         url(../assets/images/slider.png);
     background-position: center;
@@ -952,12 +918,12 @@ footer {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 100%);
         justify-items: center;
-        grid-template-areas:
-            "main appetizer"
+        grid-template-areas: "main appetizer"
             "dessert drink";
         grid-column-gap: 1.5rem;
         grid-row-gap: 9rem;
         opacity: 0;
+        animation: none;
     }
 
     .h-three {
@@ -1095,8 +1061,7 @@ footer {
 .about-restaurant__icons {
     flex: 1;
     display: grid;
-    grid-template-areas:
-        "Personnel quality"
+    grid-template-areas: "Personnel quality"
         "enviroment menu";
     justify-content: flex-end;
     justify-items: center;
@@ -1630,8 +1595,7 @@ footer {
 
 .main-courses-card__info__price {
     display: grid;
-    grid-template-areas:
-        "discount orgprice"
+    grid-template-areas: "discount orgprice"
         "discountedprice discountedprice";
     font-size: 1.25rem;
 }
@@ -1667,8 +1631,14 @@ footer {
     font-family: estedad-bold;
 }
 
+.exist-in-cart {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
 @media screen and (max-width: 1077px) {
     .main-courses-container__cards {
+        width: 100%;
         flex-direction: column;
     }
 
@@ -1695,4 +1665,67 @@ footer {
     .search-result__header h1 {
         font-size: 1.75rem;
     }
+}
+
+/*  CART COUNT */
+
+.cart-item-count {
+    position: absolute;
+    top: -1.2rem;
+    right: -0.5rem;
+    color: #417F56;
+    background-color: var(--tint-one);
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0px 1px 6px #417f5673;
+    font-size: 2rem;
+}
+
+.cart-container {
+    position: fixed;
+    top: 33%;
+    right: 29%;
+    left: 29%;
+    bottom: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -9;
+}
+
+.cart-modal {
+    background-color: #fff;
+    width: 60rem;
+    height: 25rem;
+    border-radius: 8px;
+    overflow: hidden;
+    visibility: hidden;
+    transform: scale(0);
+    transition: all 1.5s ease-in-out;
+    z-index: 9;
+}
+
+.cart-modal__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cart-modal__body__item {
+    display: flex;
+    padding: 2rem 3rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart__item-img {
+    width: 12rem;
+    height: 11rem;
+    border-radius: 8px;
 }

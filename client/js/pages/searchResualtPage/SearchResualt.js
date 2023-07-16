@@ -1,7 +1,14 @@
 import { mainCourse } from "./mainCourse.js";
 
 
+let cart = [];
+const cartItemCount = document.querySelector(".cart-item-count");
 class SearchResult {
+
+    menuItem() {
+        return mainCourse;
+    }
+
     createHeader() {
         return `
         <div class="search-result__header">
@@ -19,14 +26,15 @@ class SearchResult {
                 </i>
             </div>
         </div>
-
         `;
     }
-    createCards() {
-        const mainCourses = mainCourse;
-        let maincoursesCard = "";
 
+    createCards() {
+        const mainCourses = Storage.getMenuItemFromStorage();
+        let maincoursesCard = "";
+        let getCartItms = JSON.parse(localStorage.getItem("cart")) || [];
         mainCourses.forEach(item => {
+            let ExistInCart = getCartItms.find(findItem => parseInt(findItem.id) === parseInt(item.id));
             maincoursesCard += `
                <div class="main-courses-card">
                     <img src="${item.imageUrl}"/>
@@ -34,7 +42,7 @@ class SearchResult {
                     <h3>${item.title}</h3>
                     <div class="main-courses-card__info">
                         <div class="main-courses-card__info__action">
-                            <div class="main-courses-card__info__action__card">
+                            <div class="main-courses-card__info__action__card fav-icon">
                                 <i>
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g id="vuesax/outline/heart">
@@ -46,7 +54,7 @@ class SearchResult {
                                         </g>
                                     </svg>                            
                                 </i>
-                                <span class="main-courses-card__info__text">افزودن به علاقه مندی ها</span>
+                                <span class="main-courses-card__info__text" id="add-to-fav">افزودن به علاقه مندی ها</span>
                             </div>
                             <div class="main-courses-card__info__action__card">
                                 <i>
@@ -65,23 +73,98 @@ class SearchResult {
                             <span class="card__info__price__discounted-price">${persianJs(item.discountedPrice).englishNumber().toString()} تومان</span>
                         </div>
                     </div>
-                    <button class="reset main-courses-card__btn">افزودن به سبد خرید</button>
+                    <button id="testbtn" class="reset main-courses-card__btn + ${ExistInCart ? "exist-in-cart" : ""}" data-id=${item.id}>${ExistInCart ? "موجود در سبد خرید" : "افزودن به سبد خرید"}</button>
                     </div>                   
                </div>
             `;
         })
-
         return maincoursesCard;
     }
+
+    addToCart() {
+        const addToCartBtns = [...document.querySelectorAll('.main-courses-card__btn')];
+        // console.log(addToCartBtns);
+        addToCartBtns.forEach(btn => {
+            const id = btn.dataset.id;
+            const isInCart = cart.find(item => parseInt(item.id) === parseInt(id));
+            if (isInCart) {
+                btn.innerText = 'موجود در سبد خرید';
+                btn.disabled = true;
+                btn.style.opacity = "0.8";
+                btn.style.cursor = "not-allowed";
+            } else {
+                btn.innerText = 'افزودن به سبد خرید';
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                btn.style.cursor = "pointer";
+            }
+
+            btn.addEventListener("click", (event) => {
+                event.target.innerText = 'موجود در سبد خرید';
+                event.target.disabled = true;
+                event.target.style.opacity = "0.8";
+                event.target.style.cursor = "not-allowed";
+
+                const adddedItem = Storage.findMenuItem(id);
+                cart = [...cart, { ...adddedItem, quantity: 1 }];
+                Storage.saveCart(cart);
+                this.setCartValue(cart);
+            })
+        })
+    }
+
+    setCartValue(cart) {
+        let tempCartItems = 0;
+        if (cart.length > 0) {
+            cart.forEach(item => {
+                tempCartItems += item.quantity;
+            })
+            cartItemCount.textContent = persianJs(tempCartItems).englishNumber().toString();
+        } else {
+            const numTostring = String(tempCartItems);
+            cartItemCount.textContent = persianJs(numTostring).englishNumber().toString();
+        }
+    }
+
     SearchResultPage = () => {
-        // console.log(this.createHeader(), this.createCards);
-        let a = this.createHeader() + `
+        let renderPage = this.createHeader() + `
         <div class="main-courses-container">
             <div class="main-courses-container__cards">${this.createCards()}</div>
         </div>`;
-        return a;
+
+        return renderPage;
     }
 
+    setupApp() {
+        cart = Storage.getCart() || [];
+        this.setCartValue(cart);
+        this.addToCart();
+    }
+}
+
+export class Storage {
+    static savedMenuItemOnStrorage(getAllMenuItem) {
+        let savedMenuItems = getAllMenuItem ? getAllMenuItem : [];
+        localStorage.setItem("menuItems", JSON.stringify(savedMenuItems));
+    }
+
+    static getMenuItemFromStorage() {
+        const savedMenuItems = JSON.parse(localStorage.getItem("menuItems")) ? JSON.parse(localStorage.getItem("menuItems")) : [];
+        return savedMenuItems;
+    }
+
+    static findMenuItem(id) {
+        const savedMenuItems = JSON.parse(localStorage.getItem("menuItems"));
+        return savedMenuItems.find(item => item.id === parseInt(id));
+    }
+
+    static saveCart(cart) {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    static getCart() {
+        return JSON.parse(localStorage.getItem("cart"));
+    }
 }
 
 export default new SearchResult();

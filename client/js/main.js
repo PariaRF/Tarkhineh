@@ -5,6 +5,7 @@ import Menu from "./pages/Menu.js";
 import NotFountRearchResult from "./pages/NotFountRearchResult.js";
 import Representation from "./pages/Representation.js";
 import SearchResualt from "./pages/searchResualtPage/SearchResualt.js";
+import { Storage } from "./pages/searchResualtPage/SearchResualt.js";
 
 const mobileMenuIcon = document.getElementById('mobile-menu-icon');
 const mobileMenuClose = document.querySelector('.mobile-menu__close');
@@ -24,6 +25,7 @@ const searchModalCloseIcon = document.querySelector(".search-modal__close-icon")
 const searchContainer = document.querySelector(".search-container");
 const searchInMenu = document.querySelector('#search-in-menu');
 const body = document.getElementsByTagName("body");
+const cartItemCount = document.querySelector(".cart-item-count");
 
 // MOBILE MENU
 mobileMenuIcon.addEventListener("click", () => {
@@ -92,7 +94,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
     router();
-    // SearchResualt.createCards();
+    cartItemCount.textContent = persianJs("0").englishNumber().toString();
+    const getAllMenuItem = SearchResualt.menuItem();
+    Storage.savedMenuItemOnStrorage(getAllMenuItem);
+    Storage.getMenuItemFromStorage();
+    SearchResualt.setupApp();
 })
 
 // CHANGE ROUTE ON SEARCH RESULT

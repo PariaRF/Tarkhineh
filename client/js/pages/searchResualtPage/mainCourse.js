@@ -5,7 +5,7 @@ export const mainCourse = [
         title: "پاستا رژیمی",
         orgPrice: "175,000",
         discount: "%20",
-        discountedPrice: "150.000",
+        discountedPrice: "150,000",
     },
     {
         id: 2,
