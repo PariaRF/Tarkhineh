@@ -35,6 +35,14 @@ class SearchResult {
         let getCartItms = JSON.parse(localStorage.getItem("cart")) || [];
         mainCourses.forEach(item => {
             let ExistInCart = getCartItms.find(findItem => parseInt(findItem.id) === parseInt(item.id));
+
+            const addToCartButton = document.createElement('button');
+            addToCartButton.classList.add("reset", "main-courses-card__btn");
+            addToCartButton.classList.add(ExistInCart ? "exist-in-cart" : "nothing");
+            addToCartButton.dataset.id = item.id;
+            addToCartButton.textContent = ExistInCart ? "موجود در سبد خرید" : "افزودن به سبد خرید";
+            addToCartButton.addEventListener("click", () => { alert("hi") })
+
             maincoursesCard += `
                <div class="main-courses-card">
                     <img src="${item.imageUrl}"/>
@@ -73,7 +81,7 @@ class SearchResult {
                             <span class="card__info__price__discounted-price">${persianJs(item.discountedPrice).englishNumber().toString()} تومان</span>
                         </div>
                     </div>
-                    <button id="testbtn" class="reset main-courses-card__btn + ${ExistInCart ? "exist-in-cart" : ""}" data-id=${item.id}>${ExistInCart ? "موجود در سبد خرید" : "افزودن به سبد خرید"}</button>
+                    ${addToCartButton.outerHTML}
                     </div>                   
                </div>
             `;
@@ -83,7 +91,6 @@ class SearchResult {
 
     addToCart() {
         const addToCartBtns = [...document.querySelectorAll('.main-courses-card__btn')];
-        // console.log(addToCartBtns);
         addToCartBtns.forEach(btn => {
             const id = btn.dataset.id;
             const isInCart = cart.find(item => parseInt(item.id) === parseInt(id));
@@ -98,18 +105,6 @@ class SearchResult {
                 btn.style.opacity = "1";
                 btn.style.cursor = "pointer";
             }
-
-            btn.addEventListener("click", (event) => {
-                event.target.innerText = 'موجود در سبد خرید';
-                event.target.disabled = true;
-                event.target.style.opacity = "0.8";
-                event.target.style.cursor = "not-allowed";
-
-                const adddedItem = Storage.findMenuItem(id);
-                cart = [...cart, { ...adddedItem, quantity: 1 }];
-                Storage.saveCart(cart);
-                this.setCartValue(cart);
-            })
         })
     }
 
@@ -127,12 +122,37 @@ class SearchResult {
     }
 
     SearchResultPage = () => {
-        let renderPage = this.createHeader() + `
-        <div class="main-courses-container">
-            <div class="main-courses-container__cards">${this.createCards()}</div>
-        </div>`;
+        const mainCoursesContainer = document.createElement("div");
+        mainCoursesContainer.classList.add('main-courses-container');
 
-        return renderPage;
+        let renderPage = this.createHeader() + `
+            <div class="main-courses-container__cards">${this.createCards()}</div>
+        `;
+
+        mainCoursesContainer.innerHTML = renderPage;
+
+        const app = document.getElementById("app");
+        app.addEventListener("click", (event) => {
+            const checkClick = event.target.classList.contains('main-courses-card__btn');
+            console.log("app click");
+            if (checkClick) {
+                console.log("detected button click");
+
+                const addToCardButton = event.target;
+                const id = addToCardButton.dataset.id;
+                addToCardButton.innerText = 'موجود در سبد خرید';
+                addToCardButton.disabled = true;
+                addToCardButton.style.opacity = "0.8";
+                addToCardButton.style.cursor = "not-allowed";
+
+                const adddedItem = Storage.findMenuItem(id);
+                cart = [...cart, { ...adddedItem, quantity: 1 }];
+                Storage.saveCart(cart);
+                this.setCartValue(cart);
+            }
+        })
+
+        return mainCoursesContainer.outerHTML;
     }
 
     setupApp() {
