@@ -114,11 +114,12 @@ searchInMenu.addEventListener("keydown", (e) => {
                 router();
             }, 600);
         } else {
-            localStorage.setItem("searchValue", searchInMenu.value);
+            const searchTerms = e.target.value;
+            const encodedTerms = encodeURIComponent(searchTerms);
             e.target.value = "";
             closeModalSearch();
             e.preventDefault();
-            let newUrl = "http://localhost:5000/notfoundsearchresult";
+            let newUrl = `http://localhost:5000/notfoundsearchresult?search=${encodedTerms}`;
             setTimeout(() => {
                 window.history.pushState(null, null, newUrl);
                 router();

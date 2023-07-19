@@ -1,29 +1,15 @@
 class NotFountRearchResult {
-    constructor() {
-        let observer = new MutationObserver(function (mutations) {
-            mutations.forEach(function (mutation) {
-                if (mutation.addedNodes && mutation.addedNodes.length > 0) {
-
-                    let resultOfSearch = document.getElementById("result-of-search");
-                    if (resultOfSearch) {
-
-                        let inputValue = localStorage.getItem("searchValue");
-                        resultOfSearch.value = inputValue;
-
-                        observer.disconnect();
-                    }
-                }
-            });
-        });
-        observer.observe(document, { childList: true, subtree: true });
-    }
-
     renderNotFoundSearchResult() {
+
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const searchTerm = urlSearchParams.get('search');
+        const searchTermWhiteSpace = searchTerm;
+
         return `
         <div class="not-found-search-container">
             <h1>موردی با این مشخصات پیدا نکردیم!</h1>
             <div class="search-box-result">
-                <input class="reset" type="text" id="result-of-search" disabled>
+                <input class="reset" type="text" id="result-of-search" disabled value="${searchTermWhiteSpace}"/>
                 <i>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
