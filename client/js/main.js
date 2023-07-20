@@ -1,7 +1,6 @@
 import AboutUs from "./pages/AboutUs.js";
 import ContactUs from "./pages/ContactUs.js";
 import MainPage from "./pages/mainPage/MainPage.js";
-import Menu from "./pages/Menu.js";
 import NotFountRearchResult from "./pages/NotFountRearchResult.js";
 import Representation from "./pages/Representation.js";
 import SearchResualt from "./pages/searchResualtPage/SearchResualt.js";
@@ -52,13 +51,12 @@ submenuLabel.addEventListener("click", () => {
 // SPA
 function router(params) {
     const routes = [
-        { path: "/", view: MainPage },
-        { path: "/menu", view: Menu },
-        { path: "/representation", view: Representation },
-        { path: "/aboutus", view: AboutUs },
-        { path: "/contactus", view: ContactUs },
-        { path: "/notfoundsearchresult", view: NotFountRearchResult.renderNotFoundSearchResult },
-        { path: "/searchresult", view: SearchResualt.SearchResultPage },
+        { path: "/", title: "صفحه اصلی", view: MainPage },
+        { path: "/representation", title: "اعطای نمایندگی", view: Representation },
+        { path: "/aboutus", title: "درباره ما", view: AboutUs },
+        { path: "/contactus", title: "تماس با ما", view: ContactUs },
+        { path: "/notfoundsearchresult", title: "!پیدا نشد", view: NotFountRearchResult.renderNotFoundSearchResult },
+        { path: "/searchresult", title: "جستجو", view: SearchResualt.SearchResultPage },
     ];
 
     const potentialRoutes = routes.map((route) => {
@@ -69,6 +67,7 @@ function router(params) {
     })
 
     let match = potentialRoutes.find(route => route.isMatch);
+    document.title = `ترخینه | ${match.route.title}`;
 
     if (!match) {
         match = {
