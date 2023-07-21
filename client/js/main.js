@@ -149,10 +149,10 @@ formInputs.forEach(value => {
     value.addEventListener("input", (e) => {
         // CHECK NUMBER AND CONVERT TO PERSIAN NUMBER
         if (e.target == msgFormNumberInput) {
-            let regex = /^[^0-9]+$/;
+            let regex = /[^0-9۰-۹\b]/;
             if (e.target.value) {
                 if (regex.test(e.target.value)) {
-                    e.target.value = e.target.value.replace(/\b[^0-9]+$\b/g, '');
+                    e.target.value = e.target.value.replace(regex, '');
                 } else {
                     e.target.value = persianJs(e.target.value).englishNumber().toString();
                 }
