@@ -1730,3 +1730,21 @@ footer {
     height: 11rem;
     border-radius: 8px;
 }
+
+/* CART PAGE */
+.cart-active {
+    background-color: var(--primary) !important;
+}
+
+.cart-active-icon path {
+    fill: #fff !important;
+}
+
+.cart-active-icon-search path {
+    stroke: #fff !important;
+}
+
+.active-menu-item {
+    color: var(--primary);
+    font-weight: bold;
+}

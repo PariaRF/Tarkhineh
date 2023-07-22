@@ -1,4 +1,5 @@
 import AboutUs from "./pages/AboutUs.js";
+import Cart, { CartStrorage } from "./pages/Cart.js";
 import ContactUs from "./pages/ContactUs.js";
 import MainPage from "./pages/mainPage/MainPage.js";
 import NotFountRearchResult from "./pages/NotFountRearchResult.js";
@@ -25,6 +26,10 @@ const searchContainer = document.querySelector(".search-container");
 const searchInMenu = document.querySelector('#search-in-menu');
 const body = document.getElementsByTagName("body");
 const cartItemCount = document.querySelector(".cart-item-count");
+const cartIcon = document.querySelector('#cart-icon');
+const cartIconSvg = document.querySelector('#cart-icon-svg');
+const navLinkItem = document.querySelectorAll('.nav__link__item');
+const searchIconSvg = document.querySelector("#search-icon-svg");
 
 // MOBILE MENU
 mobileMenuIcon.addEventListener("click", () => {
@@ -57,6 +62,7 @@ function router(params) {
         { path: "/contactus", title: "تماس با ما", view: ContactUs },
         { path: "/notfoundsearchresult", title: "!پیدا نشد", view: NotFountRearchResult.renderNotFoundSearchResult },
         { path: "/searchresult", title: "جستجو", view: SearchResualt.SearchResultPage },
+        { path: "/cart", title: "سبد خرید", view: Cart.rnederCartPage },
     ];
 
     const potentialRoutes = routes.map((route) => {
@@ -68,6 +74,30 @@ function router(params) {
 
     let match = potentialRoutes.find(route => route.isMatch);
     document.title = `ترخینه | ${match.route.title}`;
+    // ACTIVE MENU ITEM
+    const navLinkItemArray = [...navLinkItem];
+    navLinkItemArray.forEach(navItem => {
+        if (navItem.textContent == match.route.title) {
+            navItem.classList.add("active-menu-item");
+        } else {
+            navItem.classList.remove("active-menu-item");
+        }
+    })
+
+    if (match.route.path == '/cart') {
+        cartIcon.classList.add("cart-active");
+        cartIconSvg.classList.add("cart-active-icon");
+    } else {
+        cartIcon.classList.remove("cart-active");
+        cartIconSvg.classList.remove("cart-active-icon");
+    }
+    if (match.route.path == '/searchresult') {
+        searchIcon.classList.add("cart-active");
+        searchIconSvg.classList.add("cart-active-icon-search");
+    } else {
+        searchIcon.classList.remove("cart-active");
+        searchIconSvg.classList.remove("cart-active-icon-search");
+    }
 
     if (!match) {
         match = {
@@ -98,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     Storage.savedMenuItemOnStrorage(getAllMenuItem);
     Storage.getMenuItemFromStorage();
     SearchResualt.setupApp();
+    CartStrorage.getCart();
 })
 
 // CHANGE ROUTE ON SEARCH RESULT
@@ -200,3 +231,13 @@ function closeModalSearch() {
     body[0].style.overflowY = "auto";
     searchContainer.style.zIndex = "-9";
 }
+
+cartIcon.addEventListener("click", (e) => {
+    cartIcon.classList.add("cart-active");
+    cartIconSvg.classList.add("cart-active-icon");
+
+    e.preventDefault();
+    let newUrl = "http://localhost:5000/cart";
+    window.history.pushState(null, null, newUrl);
+    router();
+})
