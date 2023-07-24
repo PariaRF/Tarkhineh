@@ -82,6 +82,7 @@ body {
 /* DESKTOP HEADER */
 header {
     padding: 1.5rem;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
 
 .header__container {
@@ -1747,4 +1748,175 @@ footer {
 .active-menu-item {
     color: var(--primary);
     font-weight: bold;
+}
+
+.page-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -9;
+    /* margin-top: 5rem; */
+}
+
+.multi-step-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 16rem;
+}
+
+.multi-step {
+    width: 100%;
+    flex-direction: column;
+}
+
+.multi-step__header {
+    width: 100%;
+}
+
+#multi-step-mobile-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    display: none;
+}
+
+.multi-step__header__section {
+    background-color: white;
+    margin: 1rem;
+    font-family: estedad-medium;
+    font-size: 1.6rem;
+}
+
+.multi-step__header__section span {
+    margin-right: 1rem;
+    color: var(--gray-four);
+    white-space: nowrap;
+}
+
+.multi-step__heade__section:first-child span {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.6rem;
+    white-space: nowrap;
+}
+
+.multi-step__header__line {
+    white-space: nowrap;
+    overflow: hidden;
+    color: var(--gray-four);
+}
+
+.multi-step__body {
+    background-image: url(../assets/images/EmptyPage.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 422px;
+    border: 1px solid var(--gray-four);
+    border-radius: 8px;
+    font-family: estedad-medium;
+}
+
+.multi-step__body h1 {
+    color: var(--gray-six);
+    margin-bottom: 3rem;
+}
+
+.multi-step__body button {
+    width: 184px;
+    height: 40px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid var(--primary);
+    background: var(--white);
+    color: var(--primary);
+    font-family: estedad-medium;
+    font-size: 1.6rem;
+}
+
+@media screen and (max-width: 1024px) {
+    #app {
+        min-height: 520px;
+    }
+
+    .multi-step-container {
+        padding: 0 6rem;
+        margin: 3rem 0;
+    }
+
+    .multi-step__body {
+        height: 370px;
+    }
+
+    .multi-step__body h1 {
+        font-size: 1.5rem;
+    }
+
+    .multi-step__body button {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 970px) {
+    #app {
+        height: auto;
+    }
+
+    .multi-step__heade__section:first-child span {
+        font-size: 1rem;
+    }
+
+    .multi-step__heade__section span {
+        font-size: 1rem;
+
+    }
+
+    .multi-step__body h1 {
+        font-size: 1.2rem;
+    }
+
+    .multi-step__body button {
+        width: auto;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #app {
+        height: auto;
+    }
+
+    .multi-step-container {
+        padding: 0;
+        width: 1024px;
+    }
+}
+
+@media screen and (min-width: 13494px) {
+    #app {
+        height: auto;
+    }
+
+    .multi-step-container {
+        padding: 0;
+        width: 1024px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #multi-step-desktop-header {
+        display: none;
+    }
+
+    #multi-step-mobile-header {
+        display: flex;
+    }
 }
