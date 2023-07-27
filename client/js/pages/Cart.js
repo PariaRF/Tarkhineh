@@ -1,3 +1,10 @@
+import SearchResualt, { Storage } from "./searchResualtPage/SearchResualt.js";
+
+const app = document.querySelector("#app");
+
+let cart = [];
+
+
 class Cart {
 
     Header() {
@@ -16,7 +23,7 @@ class Cart {
                     </i>
                     <h1>سبد خرید</h1>
                     <i>
-                        <svg width="16" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="cart-bill__clear-cart" width="16" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="vuesax/outline/trash">
                                 <g id="vuesax/outline/trash_2">
                                     <g id="trash">
@@ -91,64 +98,113 @@ class Cart {
         `;
     }
 
+    createCartItem() {
+        const cartEntity = CartStrorage.getCart();
+        cart = cartEntity;
+
+        app.addEventListener("click", (e) => {
+
+            if (e.target.classList.contains("cart__item__increase")) {
+
+                let target = e.target;
+                CartLogic.increaseQuantityItem(target);
+
+            }
+
+            if (e.target.classList.contains("cart__item__decrease")) {
+
+                let target = e.target;
+                CartLogic.deacreseQuantityItem(target);
+
+            }
+
+            if (e.target.classList.contains("cart__item__remove")) {
+
+                const parentElement = e.target.closest(".cart__item");
+                const id = e.target.dataset.id;
+                CartLogic.removeCartItem(id, parentElement);
+
+            }
+        });
+
+        let renderCartItem = "";
+        cartEntity.forEach(item => {
+            renderCartItem += `<div class="cart__item" data-id=${item.id}>
+                <img class="cart__item__img" src="${item.imageUrl}"/>
+                <div class="cart__item__info">
+                    <div class="cart__item__tite info__row">
+                        <h3>${item.title}</h3>
+                        <i>
+                            <svg data-id=${item.id} class="cart__item__remove" width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="vuesax/outline/trash">
+                                    <g id="vuesax/outline/trash_2">
+                                        <g id="trash">
+                                            <path id="Vector" d="M13.9999 4.48669C13.9866 4.48669 13.9666 4.48669 13.9466 4.48669C10.4199 4.13336 6.89994 4.00002 3.41328 4.35336L2.05328 4.48669C1.77328 4.51336 1.52661 4.31336 1.49994 4.03336C1.47328 3.75336 1.67328 3.51336 1.94661 3.48669L3.30661 3.35336C6.85328 2.99336 10.4466 3.13336 14.0466 3.48669C14.3199 3.51336 14.5199 3.76002 14.4933 4.03336C14.4733 4.29336 14.2533 4.48669 13.9999 4.48669Z" fill="#353535"/>
+                                            <path id="Vector_2" d="M5.66663 3.81331C5.63997 3.81331 5.6133 3.81331 5.57997 3.80665C5.3133 3.75998 5.12663 3.49998 5.1733 3.23331L5.31997 2.35998C5.42663 1.71998 5.5733 0.833313 7.12663 0.833313H8.8733C10.4333 0.833313 10.58 1.75331 10.68 2.36665L10.8266 3.23331C10.8733 3.50665 10.6866 3.76665 10.42 3.80665C10.1466 3.85331 9.88663 3.66665 9.84663 3.39998L9.69997 2.53331C9.60663 1.95331 9.58663 1.83998 8.87997 1.83998H7.1333C6.42663 1.83998 6.4133 1.93331 6.3133 2.52665L6.15997 3.39331C6.11997 3.63998 5.90663 3.81331 5.66663 3.81331Z" fill="#353535"/>
+                                            <path id="Vector_3" d="M10.14 15.1667H5.85997C3.53331 15.1667 3.43997 13.88 3.36664 12.84L2.93331 6.12666C2.91331 5.85332 3.12664 5.61332 3.39997 5.59332C3.67997 5.57999 3.91331 5.78666 3.93331 6.05999L4.36664 12.7733C4.43997 13.7867 4.46664 14.1667 5.85997 14.1667H10.14C11.54 14.1667 11.5666 13.7867 11.6333 12.7733L12.0666 6.05999C12.0866 5.78666 12.3266 5.57999 12.6 5.59332C12.8733 5.61332 13.0866 5.84666 13.0666 6.12666L12.6333 12.84C12.56 13.88 12.4666 15.1667 10.14 15.1667Z" fill="#353535"/>
+                                            <path id="Vector_4" d="M9.10672 11.5H6.88672C6.61339 11.5 6.38672 11.2733 6.38672 11C6.38672 10.7267 6.61339 10.5 6.88672 10.5H9.10672C9.38005 10.5 9.60672 10.7267 9.60672 11C9.60672 11.2733 9.38005 11.5 9.10672 11.5Z" fill="#353535"/>
+                                            <path id="Vector_5" d="M9.66671 8.83331H6.33337C6.06004 8.83331 5.83337 8.60665 5.83337 8.33331C5.83337 8.05998 6.06004 7.83331 6.33337 7.83331H9.66671C9.94004 7.83331 10.1667 8.05998 10.1667 8.33331C10.1667 8.60665 9.94004 8.83331 9.66671 8.83331Z" fill="#353535"/>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>                                
+                        </i>
+                    </div>
+                    <div class="cart__item__detail info__row">
+                        <span>کدو خورد شده ،پاستا، قارچ، گوجه، پیاز خلالی شده</span>
+                        <div class="cart__item__main-price">
+                            <span class="cart-item__detail__price">${item.orgPrice}</span>
+                            <span class="cart-item__detail__discount">${item.discount}</span>
+                        </div>
+                    </div>
+                    <div class="cart__item__footer info__row">
+                        <div class="cart__item__action info__row">
+                            <div class="cart__item__action__container">
+                                <div class="cart__item__action__rate flex-center">
+                                    <img src="client/assets/images/star.png"/>
+                                </div>
+                                <div class="cart__item__action__count">
+                                    <button class="cart__item__increase reset" data-id=${item.id}>+</button>
+                                    <span class="cart__item__quantity">${item.quantity}</span>
+                                    <button class="cart__item__decrease reset" data-id=${item.id}>-</button>
+                                </div>
+                            </div>
+                            <span class="cart__item__final__price">${item.discountedPrice}تومان</span>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+
+        });
+
+        return renderCartItem;
+    }
+
     fullCart() {
+        const cartEntity = CartStrorage.getCart();
+        cart = cartEntity;
+        const [tempCartItem, totalDiscount, totalPrice] = CartLogic.setCartValue(cart);
+
+        app.addEventListener("click", (e) => {
+            if (e.target.classList.contains("cart-bill__clear-cart")) {
+                const multiStepCartContainer = document.querySelector(".multi-step__cart-container");
+                CartLogic.clearCart(multiStepCartContainer);
+            }
+        })
+
         return `
                 <div class="multi-step__body-container flex-center">
                     <div class="multi-step__cart-container">
-                        <div class="cart__item">
-                            <img class="cart__item__img" src="client/assets/images/food.png"/>
-                            <div class="cart__item__info">
-                                <div class="cart__item__tite info__row">
-                                    <h3>پاستا رزیمی</h3>
-                                    <i>
-                                        <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g id="vuesax/outline/trash">
-                                                <g id="vuesax/outline/trash_2">
-                                                    <g id="trash">
-                                                        <path id="Vector" d="M13.9999 4.48669C13.9866 4.48669 13.9666 4.48669 13.9466 4.48669C10.4199 4.13336 6.89994 4.00002 3.41328 4.35336L2.05328 4.48669C1.77328 4.51336 1.52661 4.31336 1.49994 4.03336C1.47328 3.75336 1.67328 3.51336 1.94661 3.48669L3.30661 3.35336C6.85328 2.99336 10.4466 3.13336 14.0466 3.48669C14.3199 3.51336 14.5199 3.76002 14.4933 4.03336C14.4733 4.29336 14.2533 4.48669 13.9999 4.48669Z" fill="#353535"/>
-                                                        <path id="Vector_2" d="M5.66663 3.81331C5.63997 3.81331 5.6133 3.81331 5.57997 3.80665C5.3133 3.75998 5.12663 3.49998 5.1733 3.23331L5.31997 2.35998C5.42663 1.71998 5.5733 0.833313 7.12663 0.833313H8.8733C10.4333 0.833313 10.58 1.75331 10.68 2.36665L10.8266 3.23331C10.8733 3.50665 10.6866 3.76665 10.42 3.80665C10.1466 3.85331 9.88663 3.66665 9.84663 3.39998L9.69997 2.53331C9.60663 1.95331 9.58663 1.83998 8.87997 1.83998H7.1333C6.42663 1.83998 6.4133 1.93331 6.3133 2.52665L6.15997 3.39331C6.11997 3.63998 5.90663 3.81331 5.66663 3.81331Z" fill="#353535"/>
-                                                        <path id="Vector_3" d="M10.14 15.1667H5.85997C3.53331 15.1667 3.43997 13.88 3.36664 12.84L2.93331 6.12666C2.91331 5.85332 3.12664 5.61332 3.39997 5.59332C3.67997 5.57999 3.91331 5.78666 3.93331 6.05999L4.36664 12.7733C4.43997 13.7867 4.46664 14.1667 5.85997 14.1667H10.14C11.54 14.1667 11.5666 13.7867 11.6333 12.7733L12.0666 6.05999C12.0866 5.78666 12.3266 5.57999 12.6 5.59332C12.8733 5.61332 13.0866 5.84666 13.0666 6.12666L12.6333 12.84C12.56 13.88 12.4666 15.1667 10.14 15.1667Z" fill="#353535"/>
-                                                        <path id="Vector_4" d="M9.10672 11.5H6.88672C6.61339 11.5 6.38672 11.2733 6.38672 11C6.38672 10.7267 6.61339 10.5 6.88672 10.5H9.10672C9.38005 10.5 9.60672 10.7267 9.60672 11C9.60672 11.2733 9.38005 11.5 9.10672 11.5Z" fill="#353535"/>
-                                                        <path id="Vector_5" d="M9.66671 8.83331H6.33337C6.06004 8.83331 5.83337 8.60665 5.83337 8.33331C5.83337 8.05998 6.06004 7.83331 6.33337 7.83331H9.66671C9.94004 7.83331 10.1667 8.05998 10.1667 8.33331C10.1667 8.60665 9.94004 8.83331 9.66671 8.83331Z" fill="#353535"/>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </svg>                                
-                                    </i>
-                                </div>
-                                <div class="cart__item__detail info__row">
-                                    <span>کدو خورد شده ،پاستا، قارچ، گوجه، پیاز خلالی شده</span>
-                                    <div class="cart__item__main-price">
-                                        <span class="cart-item__detail__price">175,000</span>
-                                        <span class="cart-item__detail__discount">20%</span>
-                                    </div>
-                                </div>
-                                <div class="cart__item__footer info__row">
-                                    <div class="cart__item__action info__row">
-                                        <div class="cart__item__action__container">
-                                            <div class="cart__item__action__rate flex-center">
-                                                <img src="client/assets/images/star.png"/>
-                                            </div>
-                                            <div class="cart__item__action__count">
-                                                <button class="cart__item__increase reset">+</button>
-                                                <span class="cart__item__quantity">1</span>
-                                                <button class="cart__item__decrease reset">-</button>
-                                            </div>
-                                        </div>
-                                        <span class="cart__item__final__price">147,000 تومان</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        ${this.createCartItem()}
                     </div>
                     <div class="cart-bill">
                         <div class="cart-bill__total-quantity cart-bill--row">
                             <div class="cart-bill__count">
                                 <span>سبد خرید</span>
-                                <span>(4)</span>
+                                <span class="cart-bill__temp-count">(${tempCartItem})</span>
                             </div>
                             <i>
-                                <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg class="cart-bill__clear-cart" width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="vuesax/outline/trash">
                                         <g id="vuesax/outline/trash_2">
                                             <g id="trash">
@@ -165,7 +221,7 @@ class Cart {
                         </div>
                         <div class="cart-bill__discount cart-bill--row">
                             <span>تخفیف محصولات</span>
-                            <span>63.000 تومان</span>
+                            <span class="cart-bill__discount-num">${totalDiscount} تومان</span>
                         </div>
                         <div class="cart-bill__delivery cart-bill--row col">
                             <div class="cart-bill__delivery-cost">
@@ -191,7 +247,7 @@ class Cart {
                         </div>
                         <div class="cart-bill__total-price cart-bill--row">
                             <span>مبلغ قابل پرداخت</span>
-                            <span class="cart-bill__total-price__num">542.000 تومان</span>
+                            <span class="cart-bill__total-price__num">${totalPrice} تومان</span>
                         </div>
                         <button class="cart-bill__button reset">
                             <i>
@@ -210,7 +266,6 @@ class Cart {
     rnederCartPage = () => {
         const isCart = CartStrorage.getCart();
         if (isCart) {
-
             return `<div class="page-container flex-center">                                    
                         <div class="multi-step-container flex-center">
                             ${this.Header()}
@@ -219,7 +274,6 @@ class Cart {
                     </div>`;
 
         } else {
-
             return `<div class="page-container flex-center">                                    
                         <div class="multi-step-container flex-center">
                             ${this.Header()}
@@ -233,10 +287,121 @@ class Cart {
 
 }
 
+class CartLogic {
+
+    static increaseQuantityItem(target) {
+        let countElement = target.nextElementSibling;
+        let count = Number(countElement.textContent) + 1;
+
+        countElement.innerText = count;
+
+        const id = target.dataset.id;
+        let cartItem = cart.find(item => item.id == id);
+
+        cartItem.quantity = count;
+
+        CartStrorage.saveCart(cart);
+        let resultCartValue = CartLogic.setCartValue(cart);
+        CartLogic.updateCartValue(resultCartValue);
+        SearchResualt.setCartValue(cart);
+    }
+
+    static deacreseQuantityItem(target) {
+        let countElement = target.previousElementSibling;
+        if (countElement.textContent > 0) {
+            let count = Number(countElement.textContent) - 1;
+
+            countElement.innerText = count;
+
+            const id = target.dataset.id;
+            let addedItem = Storage.findMenuItem(id);
+            let cartItem = cart.find(item => item.id == id);
+
+            addedItem.quantity = count;
+            cartItem.quantity = count;
+
+            CartStrorage.saveCart(cart);
+            let resultCartValue = CartLogic.setCartValue(cart);
+            CartLogic.updateCartValue(resultCartValue);
+
+            if (countElement.textContent != 0) {
+                SearchResualt.setCartValue(cart);
+            }
+        } else {
+            target.disabled = true;
+        }
+    }
+
+    static setCartValue(cart) {
+
+        let tempCartItem = 0;
+        let totalDiscount = 0;
+        let totalPrice = 0;
+        if (cart) {
+            totalPrice = cart.reduce((acc, curr) => {
+                tempCartItem += curr.quantity;
+                totalDiscount += ((parseInt(curr.orgPrice) - parseInt(curr.discountedPrice)) * curr.quantity);
+                return acc + curr.quantity * parseInt(curr.discountedPrice);
+            }, 0);
+        }
+
+        return [tempCartItem, totalDiscount, totalPrice];
+    }
+
+    static updateCartValue(resultCartValue) {
+        const [tempCartItem, totalDiscount, totalPrice] = resultCartValue;
+        const cartBillTotalPriceNum = app.querySelector(".cart-bill__total-price__num");
+        const cartBillTempCount = app.querySelector(".cart-bill__temp-count");
+        const cartBillDiscountNum = app.querySelector(".cart-bill__discount-num");
+
+        cartBillTotalPriceNum.innerText = `${totalPrice} تومان`;
+        cartBillTempCount.textContent = `(${tempCartItem})`;
+        cartBillDiscountNum.textContent = `${totalDiscount} تومان`;
+    }
+
+    static removeCartItem(id, parentElement) {
+        const cartEntity = CartStrorage.getCart();
+        const multiStepCartContainer = app.querySelector('.multi-step__cart-container');
+        let cart = cartEntity;
+        if (parentElement.parentNode === multiStepCartContainer && multiStepCartContainer.children.length > 0) {
+            const filteredCart = cart.filter(item => parseInt(item.id) !== parseInt(id));
+            CartStrorage.saveCart(filteredCart);
+            let resultCartValue = this.setCartValue(filteredCart);
+            CartLogic.updateCartValue(resultCartValue);
+            SearchResualt.setCartValue(filteredCart);
+            if (cartEntity.length == 1) {
+                localStorage.removeItem("cart");
+            }
+            multiStepCartContainer.removeChild(parentElement);
+        }
+    }
+
+    static clearCart(multiStepCartContainer) {
+        const cartEntity = CartStrorage.getCart();
+        cart = cartEntity;
+
+        while (multiStepCartContainer.children.length > 0) {
+            multiStepCartContainer.firstChild.remove();
+            cart.pop();
+        }
+
+        SearchResualt.setCartValue(cart);
+        let resultCartValue = this.setCartValue(cart);
+        this.updateCartValue(resultCartValue);
+
+        localStorage.removeItem("cart");
+    }
+}
+
 export class CartStrorage {
     static getCart() {
         const savedCart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : null;
         return savedCart;
+    }
+
+    static saveCart(cart) {
+        const saveCart = cart ? localStorage.setItem("cart", JSON.stringify(cart)) : [];
+        return saveCart;
     }
 }
 

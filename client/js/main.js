@@ -128,7 +128,10 @@ document.addEventListener("DOMContentLoaded", () => {
     Storage.savedMenuItemOnStrorage(getAllMenuItem);
     Storage.getMenuItemFromStorage();
     SearchResualt.setupApp();
-    CartStrorage.getCart();
+    const cartEntity = CartStrorage.getCart();
+    // Cart.setCartValue(cartEntity);
+    // Cart.removeCartItem();
+    // Cart.creatCartItem();
 })
 
 // CHANGE ROUTE ON SEARCH RESULT

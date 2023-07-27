@@ -114,7 +114,7 @@ class SearchResult {
             cart.forEach(item => {
                 tempCartItems += item.quantity;
             })
-            cartItemCount.textContent = persianJs(tempCartItems).englishNumber().toString();
+            cartItemCount.textContent = tempCartItems = null ? persianJs(0).englishNumber().toString() : persianJs(tempCartItems).englishNumber().toString();
         } else {
             const numTostring = String(tempCartItems);
             cartItemCount.textContent = persianJs(numTostring).englishNumber().toString();
@@ -134,9 +134,7 @@ class SearchResult {
         const app = document.getElementById("app");
         app.addEventListener("click", (event) => {
             const checkClick = event.target.classList.contains('main-courses-card__btn');
-            console.log("app click");
             if (checkClick) {
-                console.log("detected button click");
 
                 const addToCardButton = event.target;
                 const id = addToCardButton.dataset.id;
