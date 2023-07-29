@@ -10,7 +10,7 @@ import { Storage } from "./pages/searchResualtPage/SearchResualt.js";
 const mobileMenuIcon = document.getElementById('mobile-menu-icon');
 const mobileMenuClose = document.querySelector('.mobile-menu__close');
 const mobileMenu = document.getElementById('mobile-menu');
-const submenuLabel = document.querySelector('#submenu-label');
+const submenuLabel = document.querySelector('.submenu-label');
 const mobileMenuSubmenu = document.querySelector('#mobile-menu__submenu');
 const app = document.getElementById("app");
 const msgFormMessageTextarea = document.querySelector(".msg__form__message");
@@ -23,13 +23,14 @@ const backdropModal = document.querySelector('.backdrop-modal');
 const searchModal = document.querySelector(".search-modal");
 const searchModalCloseIcon = document.querySelector(".search-modal__close-icon");
 const searchContainer = document.querySelector(".search-container");
-const searchInMenu = document.querySelector('#search-in-menu');
+const searchInMenu = document.querySelector('.search-in-menu');
 const body = document.getElementsByTagName("body");
 const cartItemCount = document.querySelector(".cart-item-count");
 const cartIcon = document.querySelector('#cart-icon');
 const cartIconSvg = document.querySelector('#cart-icon-svg');
 const navLinkItem = document.querySelectorAll('.nav__link__item');
 const searchIconSvg = document.querySelector("#search-icon-svg");
+const mobileMenuNav = document.querySelector(".mobile-menu__nav");
 
 // MOBILE MENU
 mobileMenuIcon.addEventListener("click", () => {
@@ -37,10 +38,18 @@ mobileMenuIcon.addEventListener("click", () => {
     mobileMenu.style.visibility = "visible";
 })
 
-mobileMenuClose.addEventListener("click", () => {
+mobileMenuNav.addEventListener("click", (e) => {
+    if (e.target.tagName === "A" && e.target.innerText !== "شعبه" && e.target.innerText !== "منو") {
+        closeMobileMenu();
+    }
+})
+
+mobileMenuClose.addEventListener("click", () => closeMobileMenu());
+
+function closeMobileMenu() {
     mobileMenu.style.transition = "clip-path 1s ease-in-out";
     mobileMenu.style.clipPath = "inset(0 100% 0 0)";
-})
+}
 
 submenuLabel.addEventListener("click", () => {
     mobileMenuSubmenu.classList.toggle('mobile-menu__submenu');
@@ -54,7 +63,7 @@ submenuLabel.addEventListener("click", () => {
 })
 
 // SPA
-function router(params) {
+export function router() {
     const routes = [
         { path: "/", title: "صفحه اصلی", view: MainPage },
         { path: "/representation", title: "اعطای نمایندگی", view: Representation },
@@ -129,9 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
     Storage.getMenuItemFromStorage();
     SearchResualt.setupApp();
     const cartEntity = CartStrorage.getCart();
-    // Cart.setCartValue(cartEntity);
-    // Cart.removeCartItem();
-    // Cart.creatCartItem();
 })
 
 // CHANGE ROUTE ON SEARCH RESULT

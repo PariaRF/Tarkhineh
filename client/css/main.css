@@ -1536,6 +1536,7 @@ footer {
     justify-content: space-around;
     align-items: center;
     height: 11rem;
+    width: 100%;
 }
 
 .search-result__header h1 strong {

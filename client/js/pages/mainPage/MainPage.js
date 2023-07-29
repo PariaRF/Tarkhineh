@@ -1,5 +1,6 @@
 import ModalOfBranches from "./components/ModalOfBranches.js";
-
+import { router } from "../../main.js";
+const app = document.querySelector("#app");
 const MainPage = () => {
 
     window.addEventListener("scroll", () => {
@@ -50,6 +51,38 @@ const MainPage = () => {
         }
     });
 
+    app.addEventListener("click", (e) => {
+        if (e.target.classList.contains("search-in-menu")) {
+            const searchInMenu = e.target;
+            searchInMenu.addEventListener("keydown", (e) => {
+                if (e.code === "Enter" || e.code === "NumpadEnter") {
+                    if (e.target.value == "پاستا") {
+                        e.target.value = "";
+                        e.preventDefault();
+                        let newUrl = "http://localhost:5000/searchresult";
+                        setTimeout(() => {
+                            window.history.pushState(null, null, newUrl);
+                            router();
+                        }, 600);
+                    } else {
+                        const searchTerms = e.target.value;
+                        const encodedTerms = encodeURIComponent(searchTerms);
+                        e.target.value = "";
+                        e.preventDefault();
+                        let newUrl = `http://localhost:5000/notfoundsearchresult?search=${encodedTerms}`;
+                        setTimeout(() => {
+                            window.history.pushState(null, null, newUrl);
+                            router();
+                        }, 600);
+                    }
+
+                }
+            })
+        }
+    })
+
+
+
     return `
         <div id="slider" class="body-text body-xl">
             <div class="slider__header flex-center">            
@@ -81,7 +114,7 @@ const MainPage = () => {
         </div>
         <div class="restaurant__menu flex-center">
             <div class="search-box">
-                <input class="reset search-box__input body-md" type="text" placeHolder="جستجو"/>
+                <input class="reset search-in-menu search-box__input body-md" type="text" placeHolder="جستجو"/>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke="#353535" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M22 22L20 20" stroke="#353535" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
