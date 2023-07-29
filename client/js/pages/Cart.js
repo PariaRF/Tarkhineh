@@ -136,9 +136,9 @@ class Cart {
                         <h3>${item.title}</h3>
                         <i>
                             <svg data-id=${item.id} class="cart__item__remove" width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g id="vuesax/outline/trash">
-                                    <g id="vuesax/outline/trash_2">
-                                        <g id="trash">
+                                <g class="color-fill" id="vuesax/outline/trash">
+                                    <g class="color-fill" id="vuesax/outline/trash_2">
+                                        <g class="color-fill" id="trash">
                                             <path id="Vector" d="M13.9999 4.48669C13.9866 4.48669 13.9666 4.48669 13.9466 4.48669C10.4199 4.13336 6.89994 4.00002 3.41328 4.35336L2.05328 4.48669C1.77328 4.51336 1.52661 4.31336 1.49994 4.03336C1.47328 3.75336 1.67328 3.51336 1.94661 3.48669L3.30661 3.35336C6.85328 2.99336 10.4466 3.13336 14.0466 3.48669C14.3199 3.51336 14.5199 3.76002 14.4933 4.03336C14.4733 4.29336 14.2533 4.48669 13.9999 4.48669Z" fill="#353535"/>
                                             <path id="Vector_2" d="M5.66663 3.81331C5.63997 3.81331 5.6133 3.81331 5.57997 3.80665C5.3133 3.75998 5.12663 3.49998 5.1733 3.23331L5.31997 2.35998C5.42663 1.71998 5.5733 0.833313 7.12663 0.833313H8.8733C10.4333 0.833313 10.58 1.75331 10.68 2.36665L10.8266 3.23331C10.8733 3.50665 10.6866 3.76665 10.42 3.80665C10.1466 3.85331 9.88663 3.66665 9.84663 3.39998L9.69997 2.53331C9.60663 1.95331 9.58663 1.83998 8.87997 1.83998H7.1333C6.42663 1.83998 6.4133 1.93331 6.3133 2.52665L6.15997 3.39331C6.11997 3.63998 5.90663 3.81331 5.66663 3.81331Z" fill="#353535"/>
                                             <path id="Vector_3" d="M10.14 15.1667H5.85997C3.53331 15.1667 3.43997 13.88 3.36664 12.84L2.93331 6.12666C2.91331 5.85332 3.12664 5.61332 3.39997 5.59332C3.67997 5.57999 3.91331 5.78666 3.93331 6.05999L4.36664 12.7733C4.43997 13.7867 4.46664 14.1667 5.85997 14.1667H10.14C11.54 14.1667 11.5666 13.7867 11.6333 12.7733L12.0666 6.05999C12.0866 5.78666 12.3266 5.57999 12.6 5.59332C12.8733 5.61332 13.0866 5.84666 13.0666 6.12666L12.6333 12.84C12.56 13.88 12.4666 15.1667 10.14 15.1667Z" fill="#353535"/>
@@ -308,7 +308,7 @@ class CartLogic {
 
     static deacreseQuantityItem(target) {
         let countElement = target.previousElementSibling;
-        if (countElement.textContent > 0) {
+        if (countElement.textContent > 1) {
             let count = Number(countElement.textContent) - 1;
 
             countElement.innerText = count;
@@ -323,12 +323,15 @@ class CartLogic {
             CartStrorage.saveCart(cart);
             let resultCartValue = CartLogic.setCartValue(cart);
             CartLogic.updateCartValue(resultCartValue);
+            SearchResualt.setCartValue(cart);
 
-            if (countElement.textContent != 0) {
+
+            if (countElement.textContent != 1) {
                 SearchResualt.setCartValue(cart);
             }
         } else {
             target.disabled = true;
+            target.style.cursor = "not-allowed";
         }
     }
 
@@ -371,6 +374,7 @@ class CartLogic {
             SearchResualt.setCartValue(filteredCart);
             if (cartEntity.length == 1) {
                 localStorage.removeItem("cart");
+                SearchResualt.clearCart();
             }
             multiStepCartContainer.removeChild(parentElement);
         }
@@ -390,6 +394,7 @@ class CartLogic {
         this.updateCartValue(resultCartValue);
 
         localStorage.removeItem("cart");
+        SearchResualt.clearCart();
     }
 }
 

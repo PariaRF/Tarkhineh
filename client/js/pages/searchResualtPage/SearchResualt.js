@@ -41,7 +41,6 @@ class SearchResult {
             addToCartButton.classList.add(ExistInCart ? "exist-in-cart" : "nothing");
             addToCartButton.dataset.id = item.id;
             addToCartButton.textContent = ExistInCart ? "موجود در سبد خرید" : "افزودن به سبد خرید";
-            addToCartButton.addEventListener("click", () => { alert("hi") })
 
             maincoursesCard += `
                <div class="main-courses-card">
@@ -135,7 +134,7 @@ class SearchResult {
         app.addEventListener("click", (event) => {
             const checkClick = event.target.classList.contains('main-courses-card__btn');
             if (checkClick) {
-
+                console.log(checkClick);
                 const addToCardButton = event.target;
                 const id = addToCardButton.dataset.id;
                 addToCardButton.innerText = 'موجود در سبد خرید';
@@ -156,7 +155,12 @@ class SearchResult {
     setupApp() {
         cart = Storage.getCart() || [];
         this.setCartValue(cart);
-        this.addToCart();
+        // this.addToCart();
+    }
+
+    clearCart() {
+        cart = [];
+        localStorage.removeItem("cart");
     }
 }
 
