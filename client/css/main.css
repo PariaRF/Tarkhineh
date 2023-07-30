@@ -381,6 +381,14 @@ header {
     .submenu__label::after {
         border: none;
     }
+
+    .nav__link__item:hover::before {
+        width: 0;
+    }
+
+    .nav__link__item {
+        width: 100%;
+    }
 }
 
 @media screen and (min-width:769px) {
@@ -490,7 +498,7 @@ header {
 /* DESKTOP FOOTER */
 footer {
     height: 30.9rem;
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(../assets/images/footer-img.jpg);
+    background-image: url(../assets/images/Footer.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

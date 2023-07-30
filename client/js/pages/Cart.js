@@ -153,8 +153,8 @@ class Cart {
                     <div class="cart__item__detail info__row">
                         <span>کدو خورد شده ،پاستا، قارچ، گوجه، پیاز خلالی شده</span>
                         <div class="cart__item__main-price">
-                            <span class="cart-item__detail__price">${item.orgPrice}</span>
-                            <span class="cart-item__detail__discount">${item.discount}</span>
+                            <span class="cart-item__detail__price">${persianJs(item.orgPrice).englishNumber().toString()}</span>
+                            <span class="cart-item__detail__discount">${persianJs(item.discount).englishNumber().toString()}</span>
                         </div>
                     </div>
                     <div class="cart__item__footer info__row">
@@ -165,11 +165,11 @@ class Cart {
                                 </div>
                                 <div class="cart__item__action__count">
                                     <button class="cart__item__increase reset" data-id=${item.id}>+</button>
-                                    <span class="cart__item__quantity">${item.quantity}</span>
+                                    <span class="cart__item__quantity">${persianJs(item.quantity).englishNumber().toString()}</span>
                                     <button class="cart__item__decrease reset" data-id=${item.id}>-</button>
                                 </div>
                             </div>
-                            <span class="cart__item__final__price">${item.discountedPrice}تومان</span>
+                            <span class="cart__item__final__price">${persianJs(item.discountedPrice).englishNumber().toString()}تومان</span>
                         </div>
                     </div>
                 </div>
@@ -201,7 +201,7 @@ class Cart {
                         <div class="cart-bill__total-quantity cart-bill--row">
                             <div class="cart-bill__count">
                                 <span>سبد خرید</span>
-                                <span class="cart-bill__temp-count">(${tempCartItem})</span>
+                                <span class="cart-bill__temp-count">(${persianJs(tempCartItem).englishNumber().toString()})</span>
                             </div>
                             <i>
                                 <svg class="cart-bill__clear-cart" width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -221,12 +221,12 @@ class Cart {
                         </div>
                         <div class="cart-bill__discount cart-bill--row">
                             <span>تخفیف محصولات</span>
-                            <span class="cart-bill__discount-num">${totalDiscount} تومان</span>
+                            <span class="cart-bill__discount-num">${persianJs(totalDiscount).englishNumber().toString()} تومان</span>
                         </div>
                         <div class="cart-bill__delivery cart-bill--row col">
                             <div class="cart-bill__delivery-cost">
                                 <span>هزینه ارسال</span>
-                                <span>0 تومان</span>
+                                <span>${persianJs("0").englishNumber().toString()} تومان</span>
                             </div>
                             <div class="cart-bill__note">
                                 <i>
@@ -247,7 +247,7 @@ class Cart {
                         </div>
                         <div class="cart-bill__total-price cart-bill--row">
                             <span>مبلغ قابل پرداخت</span>
-                            <span class="cart-bill__total-price__num">${totalPrice} تومان</span>
+                            <span class="cart-bill__total-price__num">${persianJs(totalPrice).englishNumber().toString()} تومان</span>
                         </div>
                         <button class="cart-bill__button reset">
                             <i>
@@ -291,33 +291,39 @@ class CartLogic {
 
     static increaseQuantityItem(target) {
         let countElement = target.nextElementSibling;
-        let count = Number(countElement.textContent) + 1;
+        let countElementEnNum = persianJs(countElement.textContent).toEnglishNumber().toString();
+        let count = Number(countElementEnNum) + 1;
 
-        countElement.innerText = count;
+        countElement.innerText = persianJs(count).englishNumber().toString();
 
         const id = target.dataset.id;
         let cartItem = cart.find(item => item.id == id);
+        let countNumToPersian = persianJs(count).englishNumber().toString();
 
         cartItem.quantity = count;
+
 
         CartStrorage.saveCart(cart);
         let resultCartValue = CartLogic.setCartValue(cart);
         CartLogic.updateCartValue(resultCartValue);
         SearchResualt.setCartValue(cart);
+
+        let decreaseElement = target.nextElementSibling.nextElementSibling;
+        decreaseElement.disabled = false;
+        decreaseElement.style.cursor = "pointer";
     }
 
     static deacreseQuantityItem(target) {
         let countElement = target.previousElementSibling;
-        if (countElement.textContent > 1) {
-            let count = Number(countElement.textContent) - 1;
+        let countElementEnNum = persianJs(countElement.textContent).toEnglishNumber().toString();
+        if (countElementEnNum > 1) {
+            let count = Number(countElementEnNum) - 1;
 
-            countElement.innerText = count;
+            countElement.innerText = persianJs(count).englishNumber().toString();
 
             const id = target.dataset.id;
-            let addedItem = Storage.findMenuItem(id);
             let cartItem = cart.find(item => item.id == id);
 
-            addedItem.quantity = count;
             cartItem.quantity = count;
 
             CartStrorage.saveCart(cart);
@@ -326,7 +332,7 @@ class CartLogic {
             SearchResualt.setCartValue(cart);
 
 
-            if (countElement.textContent != 1) {
+            if (countElement.textContent > 1) {
                 SearchResualt.setCartValue(cart);
             }
         } else {
@@ -357,9 +363,13 @@ class CartLogic {
         const cartBillTempCount = app.querySelector(".cart-bill__temp-count");
         const cartBillDiscountNum = app.querySelector(".cart-bill__discount-num");
 
-        cartBillTotalPriceNum.innerText = `${totalPrice} تومان`;
-        cartBillTempCount.textContent = `(${tempCartItem})`;
-        cartBillDiscountNum.textContent = `${totalDiscount} تومان`;
+        let persianNumTotalPrice = totalPrice >= 1 ? persianJs(totalPrice).englishNumber().toString() : persianJs("0").englishNumber().toString();
+        let persianNumTempCartItem = tempCartItem >= 1 ? persianJs(tempCartItem).englishNumber().toString() : persianJs("0").englishNumber().toString();
+        let persianNumTotalDiscount = totalDiscount >= 1 ? persianJs(totalDiscount).englishNumber().toString() : persianJs("0").englishNumber().toString();
+
+        cartBillTotalPriceNum.innerText = `${persianNumTotalPrice} تومان`;
+        cartBillTempCount.textContent = `(${persianNumTempCartItem})`;
+        cartBillDiscountNum.textContent = `${persianNumTotalDiscount} تومان`;
     }
 
     static removeCartItem(id, parentElement) {

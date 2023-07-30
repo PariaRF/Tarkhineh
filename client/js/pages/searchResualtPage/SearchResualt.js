@@ -113,7 +113,7 @@ class SearchResult {
             cart.forEach(item => {
                 tempCartItems += item.quantity;
             })
-            cartItemCount.textContent = tempCartItems = null ? persianJs(0).englishNumber().toString() : persianJs(tempCartItems).englishNumber().toString();
+            cartItemCount.textContent = tempCartItems >= 1 ? persianJs(tempCartItems).englishNumber().toString() : persianJs("0").englishNumber().toString();
         } else {
             const numTostring = String(tempCartItems);
             cartItemCount.textContent = persianJs(numTostring).englishNumber().toString();
@@ -134,7 +134,6 @@ class SearchResult {
         app.addEventListener("click", (event) => {
             const checkClick = event.target.classList.contains('main-courses-card__btn');
             if (checkClick) {
-                console.log(checkClick);
                 const addToCardButton = event.target;
                 const id = addToCardButton.dataset.id;
                 addToCardButton.innerText = 'موجود در سبد خرید';
