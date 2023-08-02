@@ -2294,3 +2294,38 @@ footer {
         width: 100%;
     }
 }
+
+.maintnance__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 6rem 0 0 0;
+    flex-direction: column;
+}
+
+.maintnance__container img {
+    z-index: -9;
+    width: 100%;
+}
+
+.maintnance__container h1 {
+    text-align: center;
+    color: var(--tint-one);
+    margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 680px) {
+    #app {
+        min-height: 65vh;
+    }
+
+    .maintnance__container {
+        align-items: center;
+        height: 65vh;
+        padding: 0;
+    }
+
+    .maintnance__container img {
+        width: 100%;
+    }
+}
