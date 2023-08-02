@@ -2,6 +2,7 @@ import AboutUs from "./pages/AboutUs.js";
 import Cart, { CartStrorage } from "./pages/Cart.js";
 import ContactUs from "./pages/ContactUs.js";
 import MainPage from "./pages/mainPage/MainPage.js";
+import NotFound from "./pages/NotFound.js";
 import NotFountRearchResult from "./pages/NotFountRearchResult.js";
 import Representation from "./pages/Representation.js";
 import SearchResualt from "./pages/searchResualtPage/SearchResualt.js";
@@ -72,6 +73,7 @@ export function router() {
         { path: "/notfoundsearchresult", title: "!پیدا نشد", view: NotFountRearchResult.renderNotFoundSearchResult },
         { path: "/searchresult", title: "جستجو", view: SearchResualt.SearchResultPage },
         { path: "/cart", title: "سبد خرید", view: Cart.rnederCartPage },
+        { path: "/not-found", title: "پیدا نشد!", view: NotFound },
     ];
 
     const potentialRoutes = routes.map((route) => {
@@ -82,35 +84,36 @@ export function router() {
     })
 
     let match = potentialRoutes.find(route => route.isMatch);
-    document.title = `ترخینه | ${match.route.title}`;
+    match ? document.title = `ترخینه | ${match.route.title}` : null;
     // ACTIVE MENU ITEM
     const navLinkItemArray = [...navLinkItem];
-    navLinkItemArray.forEach(navItem => {
+    match ? navLinkItemArray.forEach(navItem => {
         if (navItem.textContent == match.route.title) {
             navItem.classList.add("active-menu-item");
         } else {
             navItem.classList.remove("active-menu-item");
         }
-    })
-
-    if (match.route.path == '/cart') {
-        cartIcon.classList.add("cart-active");
-        cartIconSvg.classList.add("cart-active-icon");
-    } else {
-        cartIcon.classList.remove("cart-active");
-        cartIconSvg.classList.remove("cart-active-icon");
-    }
-    if (match.route.path == '/searchresult') {
-        searchIcon.classList.add("cart-active");
-        searchIconSvg.classList.add("cart-active-icon-search");
-    } else {
-        searchIcon.classList.remove("cart-active");
-        searchIconSvg.classList.remove("cart-active-icon-search");
+    }) : null;
+    if (match) {
+        if (match.route.path == '/cart') {
+            cartIcon.classList.add("cart-active");
+            cartIconSvg.classList.add("cart-active-icon");
+        } else {
+            cartIcon.classList.remove("cart-active");
+            cartIconSvg.classList.remove("cart-active-icon");
+        }
+        if (match.route.path == '/searchresult') {
+            searchIcon.classList.add("cart-active");
+            searchIconSvg.classList.add("cart-active-icon-search");
+        } else {
+            searchIcon.classList.remove("cart-active");
+            searchIconSvg.classList.remove("cart-active-icon-search");
+        }
     }
 
     if (!match) {
         match = {
-            route: { path: "/not-found", view: () => console.log("not found page") },
+            route: { path: "/not-found", title: "پیدا نشد!", view: NotFound },
             isMatch: true
         }
     };

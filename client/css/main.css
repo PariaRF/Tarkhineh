@@ -2266,3 +2266,31 @@ footer {
         width: 90%;
     }
 }
+
+/* NOT FOUND PAGE */
+.not-found__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.not-found__container img {
+    z-index: -9;
+    width: 80%;
+}
+
+@media screen and (max-width: 680px) {
+    #app {
+        min-height: 65vh;
+    }
+
+    .not-found__container {
+        align-items: center;
+        height: 65vh;
+
+    }
+
+    .not-found__container img {
+        width: 100%;
+    }
+}
