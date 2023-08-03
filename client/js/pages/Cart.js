@@ -153,7 +153,7 @@ class Cart {
                     <div class="cart__item__detail info__row">
                         <span>کدو خورد شده ،پاستا، قارچ، گوجه، پیاز خلالی شده</span>
                         <div class="cart__item__main-price">
-                            <span class="cart-item__detail__price">${persianJs(item.orgPrice).englishNumber().toString()}</span>
+                            <span class="cart-item__detail__price">${CartLogic.formatter(item.orgPrice)}</span>
                             <span class="cart-item__detail__discount">${persianJs(item.discount).englishNumber().toString()}</span>
                         </div>
                     </div>
@@ -169,7 +169,7 @@ class Cart {
                                     <button class="cart__item__decrease reset" data-id=${item.id}>-</button>
                                 </div>
                             </div>
-                            <span class="cart__item__final__price">${persianJs(item.discountedPrice).englishNumber().toString()}تومان</span>
+                            <span class="cart__item__final__price">${CartLogic.formatter(item.discountedPrice)}تومان</span>
                         </div>
                     </div>
                 </div>
@@ -221,7 +221,7 @@ class Cart {
                         </div>
                         <div class="cart-bill__discount cart-bill--row">
                             <span>تخفیف محصولات</span>
-                            <span class="cart-bill__discount-num">${persianJs(totalDiscount).englishNumber().toString()} تومان</span>
+                            <span class="cart-bill__discount-num">${CartLogic.formatter(totalDiscount)} تومان</span>
                         </div>
                         <div class="cart-bill__delivery cart-bill--row col">
                             <div class="cart-bill__delivery-cost">
@@ -247,7 +247,7 @@ class Cart {
                         </div>
                         <div class="cart-bill__total-price cart-bill--row">
                             <span>مبلغ قابل پرداخت</span>
-                            <span class="cart-bill__total-price__num">${persianJs(totalPrice).englishNumber().toString()} تومان</span>
+                            <span class="cart-bill__total-price__num">${CartLogic.formatter(totalPrice)} تومان</span>
                         </div>
                         <button class="cart-bill__button reset">
                             <i>
@@ -263,7 +263,7 @@ class Cart {
         `;
     }
 
-    rnederCartPage = () => {
+    renederCartPage = () => {
         const isCart = CartStrorage.getCart();
         if (isCart) {
             return `<div class="page-container flex-center">                                    
@@ -287,7 +287,7 @@ class Cart {
 
 }
 
-class CartLogic {
+export class CartLogic {
 
     static increaseQuantityItem(target) {
         let countElement = target.nextElementSibling;
@@ -363,13 +363,9 @@ class CartLogic {
         const cartBillTempCount = app.querySelector(".cart-bill__temp-count");
         const cartBillDiscountNum = app.querySelector(".cart-bill__discount-num");
 
-        let persianNumTotalPrice = totalPrice >= 1 ? persianJs(totalPrice).englishNumber().toString() : persianJs("0").englishNumber().toString();
-        let persianNumTempCartItem = tempCartItem >= 1 ? persianJs(tempCartItem).englishNumber().toString() : persianJs("0").englishNumber().toString();
-        let persianNumTotalDiscount = totalDiscount >= 1 ? persianJs(totalDiscount).englishNumber().toString() : persianJs("0").englishNumber().toString();
-
-        cartBillTotalPriceNum.innerText = `${persianNumTotalPrice} تومان`;
-        cartBillTempCount.textContent = `(${persianNumTempCartItem})`;
-        cartBillDiscountNum.textContent = `${persianNumTotalDiscount} تومان`;
+        cartBillTotalPriceNum.innerText = `${CartLogic.formatter(totalPrice)} تومان`;
+        cartBillTempCount.textContent = `(${CartLogic.formatter(tempCartItem)})`;
+        cartBillDiscountNum.textContent = `${CartLogic.formatter(totalDiscount)} تومان`;
     }
 
     static removeCartItem(id, parentElement) {
@@ -405,6 +401,13 @@ class CartLogic {
 
         localStorage.removeItem("cart");
         SearchResualt.clearCart();
+    }
+
+    static formatter(number) {
+        let num = Number(number);
+        return num.toLocaleString('fa-IR', {
+            minimumFractionDigits: 0, maximumFractionDigits: 2
+        });
     }
 }
 

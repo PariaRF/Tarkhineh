@@ -639,7 +639,7 @@ footer {
     position: absolute;
     bottom: -4rem;
     left: 0;
-    opacity: 0.2;
+    opacity: 0.5;
     cursor: not-allowed;
 }
 

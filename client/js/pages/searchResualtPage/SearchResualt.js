@@ -1,3 +1,4 @@
+import Cart, { CartLogic } from "../Cart.js";
 import { mainCourse } from "./mainCourse.js";
 
 
@@ -75,9 +76,9 @@ class SearchResult {
                             </div>
                         </div>
                         <div class="main-courses-card__info__price">
-                        <span class="card__info__price__org-price">${persianJs(item.orgPrice).englishNumber().toString()}</span>
+                        <span class="card__info__price__org-price">${CartLogic.formatter(item.orgPrice)}</span>
                         <span class="card__info__price__discount">${persianJs(item.discount).englishNumber().toString()}</span>
-                            <span class="card__info__price__discounted-price">${persianJs(item.discountedPrice).englishNumber().toString()} تومان</span>
+                            <span class="card__info__price__discounted-price">${CartLogic.formatter(item.discountedPrice)} تومان</span>
                         </div>
                     </div>
                     ${addToCartButton.outerHTML}

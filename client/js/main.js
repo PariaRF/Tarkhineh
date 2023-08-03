@@ -72,7 +72,7 @@ export function router() {
         { path: "/contactus", title: "تماس با ما", view: ContactUs },
         { path: "/notfoundsearchresult", title: "!پیدا نشد", view: NotFountRearchResult.renderNotFoundSearchResult },
         { path: "/searchresult", title: "جستجو", view: SearchResualt.SearchResultPage },
-        { path: "/cart", title: "سبد خرید", view: Cart.rnederCartPage },
+        { path: "/cart", title: "سبد خرید", view: Cart.renederCartPage },
         { path: "/not-found", title: "پیدا نشد!", view: NotFound },
     ];
 
