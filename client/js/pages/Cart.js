@@ -189,6 +189,9 @@ class Cart {
             if (e.target.classList.contains("cart-bill__clear-cart")) {
                 const multiStepCartContainer = document.querySelector(".multi-step__cart-container");
                 CartLogic.clearCart(multiStepCartContainer);
+                multiStepCartContainer.setAttribute("style", "background-image: url('client/assets/images/EmptyPage.png')");
+                multiStepCartContainer.style.backgroundRepeat = "no-repeat";
+                multiStepCartContainer.style.backgroundSize = "cover";
             }
         })
 
