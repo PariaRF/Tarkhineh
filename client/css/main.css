@@ -1856,6 +1856,12 @@ footer {
     font-size: 1.6rem;
 }
 
+.restaurant-menu:hover {
+    transition: all 0.8s ease-in-out;
+    color: white;
+    background-color: var(--primary);
+}
+
 @media screen and (max-width: 1024px) {
     #app {
         min-height: 100vh;

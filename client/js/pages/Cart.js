@@ -1,3 +1,4 @@
+import { router } from "../main.js";
 import SearchResualt, { Storage } from "./searchResualtPage/SearchResualt.js";
 
 const app = document.querySelector("#app");
@@ -88,11 +89,19 @@ class Cart {
     }
 
     emptyCart() {
+        app.addEventListener("click", (e) => {
+            if (e.target.classList.contains("restaurant-menu")) {
+                console.log('yes!');
+                let newUrl = "http://localhost:5000/searchresult";
+                window.history.pushState(null, null, newUrl);
+                router();
+            }
+        })
         return `
             <div class="multi-step flex-center">
                 <div class="multi-step__body">
                     <h1>شما در حال حاضر هیچ سفارشی ثبت نکرده اید!</h1>
-                    <button class="reset flex-center">منوی رستوران</button>
+                    <button class="reset flex-center restaurant-menu">منوی رستوران</button>
                 </div>
             </div>
         `;
