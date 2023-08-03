@@ -2299,7 +2299,7 @@ footer {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 6rem 0 0 0;
+    padding: 4rem 0 4rem 0;
     flex-direction: column;
 }
 
@@ -2310,7 +2310,7 @@ footer {
 
 .maintnance__container h1 {
     text-align: center;
-    color: var(--tint-one);
+    color: var(--tint-four);
     margin-bottom: 1.5rem;
 }
 
