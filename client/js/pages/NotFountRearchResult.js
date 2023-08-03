@@ -20,7 +20,7 @@ class NotFountRearchResult {
                     </svg>
                 </i>
             </div>
-            <img src="client/assets/images/MatchNotFound.png"/>
+            <img src="client/assets/images/MatchNotFound.png" alt="not-found-result"/>
         </div>
         `;
     }

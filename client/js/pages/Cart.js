@@ -130,7 +130,7 @@ class Cart {
         let renderCartItem = "";
         cartEntity.forEach(item => {
             renderCartItem += `<div class="cart__item" data-id=${item.id}>
-                <img class="cart__item__img" src="${item.imageUrl}"/>
+                <img class="cart__item__img" src="${item.imageUrl}" alt="food"/>
                 <div class="cart__item__info">
                     <div class="cart__item__tite info__row">
                         <h3>${item.title}</h3>
@@ -161,7 +161,7 @@ class Cart {
                         <div class="cart__item__action info__row">
                             <div class="cart__item__action__container">
                                 <div class="cart__item__action__rate flex-center">
-                                    <img src="client/assets/images/star.png"/>
+                                    <img src="client/assets/images/star.png" alt="rate"/>
                                 </div>
                                 <div class="cart__item__action__count">
                                     <button class="cart__item__increase reset" data-id=${item.id}>+</button>

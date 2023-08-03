@@ -123,19 +123,19 @@ const MainPage = () => {
             <h4 class="h-three">منوی رستوران</h4>
             <div class="restaurant__menu__content">              
                 <div class="menu__content__item item-main-area">
-                    <img class="content__item__img" src="client/assets/images/main-course.png"/>
+                    <img class="content__item__img" src="client/assets/images/main-course.png" alt="main-courses"/>
                     <button class="content__item__btn">غذای اصلی</button>
                 </div>
                 <div class="menu__content__item item-appetizer-area">
-                    <img class="content__item__img" src="client/assets/images/Appetizer.png"/>
+                    <img class="content__item__img" src="client/assets/images/Appetizer.png" alt="appetizer"/>
                     <button class="content__item__btn">پیش غذا</button>
                 </div>
                 <div class="menu__content__item item-dessert-area">
-                    <img class="content__item__img" src="client/assets/images/Dessert.png"/>
+                    <img class="content__item__img" src="client/assets/images/Dessert.png" alt="dessert"/>
                     <button class="content__item__btn">دسر</button>
                 </div>
                 <div class="menu__content__item item-drink-area">
-                    <img class="content__item__img" src="client/assets/images/Drink.png"/>
+                    <img class="content__item__img" src="client/assets/images/Drink.png" alt="drink"/>
                     <button class="content__item__btn">نوشیدنی</button>
                 </div>
             </div>           
@@ -201,7 +201,7 @@ const MainPage = () => {
             <h4 class="branches__title h-three">ترخینه گردی</h4>
             <div class="branches__container flex-center">
                 <div class="flex-center branches__container__card">
-                    <img class="branches__container__card__img" src="client/assets/images/branches/Ekbatan.webp"/>
+                    <img class="branches__container__card__img" src="client/assets/images/branches/Ekbatan.webp" alt="Ekbatan-branch"/>
                     <i class="branches__container__card__icon open-modal-branches" id="ekbatan-branch-button">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -249,7 +249,7 @@ const MainPage = () => {
                     </div>
                 </div>
                 <div class="flex-center branches__container__card">
-                    <img class="branches__container__card__img" src="client/assets/images/branches/Aghdasieh.webp"/>
+                    <img class="branches__container__card__img" src="client/assets/images/branches/Aghdasieh.webp" alt="Aqdasieh-branch"/>
                     <i class="branches__container__card__icon open-modal-branches">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -273,7 +273,7 @@ const MainPage = () => {
                     </div>
                 </div>
                 <div class="flex-center branches__container__card">
-                    <img class="branches__container__card__img" src="client/assets/images/branches/Vanak.webp"/>
+                    <img class="branches__container__card__img" src="client/assets/images/branches/Vanak.webp" alt="vanak-branch"/>
                     <i class="branches__container__card__icon open-modal-branches">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
