@@ -1,4 +1,4 @@
-import { router } from "../main.js";
+import { baseUrl, router } from "../main.js";
 import SearchResualt, { Storage } from "./searchResualtPage/SearchResualt.js";
 
 const app = document.querySelector("#app");
@@ -91,8 +91,7 @@ class Cart {
     emptyCart() {
         app.addEventListener("click", (e) => {
             if (e.target.classList.contains("restaurant-menu")) {
-                console.log('yes!');
-                let newUrl = "http://localhost:5000/searchresult";
+                let newUrl = `${baseUrl}/searchresult`;
                 window.history.pushState(null, null, newUrl);
                 router();
             }

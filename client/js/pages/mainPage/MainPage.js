@@ -37,7 +37,7 @@ const MainPage = () => {
         }
 
         const scrollPossition = window.scrollY;
-        if (window.location.href === "http://localhost:5000/") {
+        if (window.location.href === `${baseUrl}/`) {
             if (scrollPossition >= 100) {
                 restaurantMenuContainer.classList.add('showContainerMainPage');
             } else {
@@ -59,7 +59,7 @@ const MainPage = () => {
                     if (e.target.value == "پاستا") {
                         e.target.value = "";
                         e.preventDefault();
-                        let newUrl = "http://localhost:5000/searchresult";
+                        let newUrl = `${baseUrl}/searchresult`;
                         setTimeout(() => {
                             window.history.pushState(null, null, newUrl);
                             router();
@@ -69,7 +69,7 @@ const MainPage = () => {
                         const encodedTerms = encodeURIComponent(searchTerms);
                         e.target.value = "";
                         e.preventDefault();
-                        let newUrl = `http://localhost:5000/notfoundsearchresult?search=${encodedTerms}`;
+                        let newUrl = `${baseUrl}/notfoundsearchresult?search=${encodedTerms}`;
                         setTimeout(() => {
                             window.history.pushState(null, null, newUrl);
                             router();

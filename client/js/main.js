@@ -32,6 +32,7 @@ const cartIconSvg = document.querySelector('#cart-icon-svg');
 const navLinkItem = document.querySelectorAll('.nav__link__item');
 const searchIconSvg = document.querySelector("#search-icon-svg");
 const mobileMenuNav = document.querySelector(".mobile-menu__nav");
+export const baseUrl = 'http://localhost:5000';
 
 // MOBILE MENU
 mobileMenuIcon.addEventListener("click", () => {
@@ -150,7 +151,7 @@ searchInMenu.addEventListener("keydown", (e) => {
             e.target.value = "";
             closeModalSearch();
             e.preventDefault();
-            let newUrl = "http://localhost:5000/searchresult";
+            let newUrl = `${baseUrl}/searchresult`;
             setTimeout(() => {
                 window.history.pushState(null, null, newUrl);
                 router();
@@ -161,7 +162,7 @@ searchInMenu.addEventListener("keydown", (e) => {
             e.target.value = "";
             closeModalSearch();
             e.preventDefault();
-            let newUrl = `http://localhost:5000/notfoundsearchresult?search=${encodedTerms}`;
+            let newUrl = `${baseUrl}/notfoundsearchresult?search=${encodedTerms}`;
             setTimeout(() => {
                 window.history.pushState(null, null, newUrl);
                 router();
@@ -249,7 +250,7 @@ cartIcon.addEventListener("click", (e) => {
     cartIconSvg.classList.add("cart-active-icon");
 
     e.preventDefault();
-    let newUrl = "http://localhost:5000/cart";
+    let newUrl = `${baseUrl}/cart`;
     window.history.pushState(null, null, newUrl);
     router();
 })
