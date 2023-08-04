@@ -1,5 +1,5 @@
 import ModalOfBranches from "./components/ModalOfBranches.js";
-import { router } from "../../main.js";
+import { baseUrl, router } from "../../main.js";
 const app = document.querySelector("#app");
 const MainPage = () => {
 
