@@ -109,6 +109,7 @@ class SearchResult {
     }
 
     setCartValue(cart) {
+
         let tempCartItems = 0;
         if (cart.length > 0) {
             cart.forEach(item => {
@@ -131,23 +132,24 @@ class SearchResult {
 
         mainCoursesContainer.innerHTML = renderPage;
 
-        const app = document.getElementById("app");
-        app.addEventListener("click", (event) => {
-            const checkClick = event.target.classList.contains('main-courses-card__btn');
-            if (checkClick) {
-                const addToCardButton = event.target;
-                const id = addToCardButton.dataset.id;
-                addToCardButton.innerText = 'موجود در سبد خرید';
-                addToCardButton.disabled = true;
-                addToCardButton.style.opacity = "0.8";
-                addToCardButton.style.cursor = "not-allowed";
+        // const app = document.getElementById("app");
+        // app.addEventListener("click", (event) => {
+        //     this.addToCartTrigger(event);
+        //     const checkClick = event.target.classList.contains('main-courses-card__btn');
+        // if (checkClick) {
+        //     const addToCardButton = event.target;
+        //     const id = addToCardButton.dataset.id;
+        //     addToCardButton.innerText = 'موجود در سبد خرید';
+        //     addToCardButton.disabled = true;
+        //     addToCardButton.style.opacity = "0.8";
+        //     addToCardButton.style.cursor = "not-allowed";
 
-                const adddedItem = Storage.findMenuItem(id);
-                cart = [...cart, { ...adddedItem, quantity: 1 }];
-                Storage.saveCart(cart);
-                this.setCartValue(cart);
-            }
-        })
+        //     const adddedItem = Storage.findMenuItem(id);
+        //     cart = [...cart, { ...adddedItem, quantity: 1 }];
+        //     Storage.saveCart(cart);
+        //     this.setCartValue(cart);
+        // }
+        // })
 
         return mainCoursesContainer.outerHTML;
     }
@@ -155,7 +157,6 @@ class SearchResult {
     setupApp() {
         cart = Storage.getCart() || [];
         this.setCartValue(cart);
-        // this.addToCart();
     }
 
     clearCart() {
@@ -182,6 +183,7 @@ export class Storage {
 
     static saveCart(cart) {
         localStorage.setItem("cart", JSON.stringify(cart));
+
     }
 
     static getCart() {

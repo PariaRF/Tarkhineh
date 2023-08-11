@@ -1,11 +1,12 @@
 import AboutUs from "./pages/AboutUs.js";
-import Cart, { CartStrorage } from "./pages/Cart.js";
+import Cart, { CartLogic, CartStrorage } from "./pages/Cart.js";
 import ContactUs from "./pages/ContactUs.js";
 import MainPage from "./pages/mainPage/MainPage.js";
 import NotFound from "./pages/NotFound.js";
 import NotFountRearchResult from "./pages/NotFountRearchResult.js";
 import Representation from "./pages/Representation.js";
 import SearchResualt from "./pages/searchResualtPage/SearchResualt.js";
+import SearchResult from "./pages/searchResualtPage/SearchResualt.js";
 import { Storage } from "./pages/searchResualtPage/SearchResualt.js";
 
 const mobileMenuIcon = document.getElementById('mobile-menu-icon');
@@ -253,4 +254,55 @@ cartIcon.addEventListener("click", (e) => {
     let newUrl = `${baseUrl}/cart`;
     window.history.pushState(null, null, newUrl);
     router();
+})
+
+
+app.addEventListener("click", (event) => {
+
+    const checkClick = event.target.classList.contains('main-courses-card__btn');
+    if (checkClick) {
+        const addToCardButton = event.target;
+        const id = addToCardButton.dataset.id;
+        addToCardButton.innerText = 'موجود در سبد خرید';
+        addToCardButton.disabled = true;
+        addToCardButton.style.opacity = "0.8";
+        addToCardButton.style.cursor = "not-allowed";
+
+        const adddedItem = Storage.findMenuItem(id);
+        let cart = CartStrorage.getCart() || [];
+        cart = [...cart, { ...adddedItem, quantity: 1 }];
+        Storage.saveCart(cart);
+        SearchResult.setCartValue(cart);
+    }
+
+    if (event.target.classList.contains("cart-bill__clear-cart")) {
+        const multiStepCartContainer = document.querySelector(".multi-step__cart-container");
+        CartLogic.clearCart(multiStepCartContainer);
+        SearchResualt.clearCart();
+        multiStepCartContainer.setAttribute("style", "background-image: url('client/assets/images/EmptyPage.png')");
+        multiStepCartContainer.style.backgroundRepeat = "no-repeat";
+        multiStepCartContainer.style.backgroundSize = "cover";
+    }
+
+    if (event.target.classList.contains("cart__item__increase")) {
+
+        let target = event.target;
+        CartLogic.increaseQuantityItem(target);
+
+    }
+
+    if (event.target.classList.contains("cart__item__decrease")) {
+
+        let target = event.target;
+        CartLogic.deacreseQuantityItem(target);
+
+    }
+
+    if (event.target.classList.contains("cart__item__remove")) {
+
+        const parentElement = event.target.closest(".cart__item");
+        const id = event.target.dataset.id;
+        CartLogic.removeCartItem(id, parentElement);
+
+    }
 })
