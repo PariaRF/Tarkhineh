@@ -602,12 +602,12 @@ footer {
 
 .msg__form__full-name {
     grid-area: name;
-    cursor: progress;
+    cursor: text;
 }
 
 .msg__form__number {
     grid-area: number;
-    cursor: progress;
+    cursor: text;
     direction: ltr;
     text-align: right;
     letter-spacing: 0.3rem;
@@ -624,7 +624,7 @@ footer {
 
 .msg__form__message {
     grid-area: msg;
-    cursor: progress;
+    cursor: text;
 }
 
 .tooltip {
@@ -856,6 +856,30 @@ footer {
     }
 }
 
+@keyframes showContentX {
+    0% {
+        opacity: 0;
+        transform: translateX(20%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes showContentXL {
+    0% {
+        opacity: 0;
+        transform: translateX(-20%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .menu__content__item {
     border: 1px solid var(--primary);
     border-radius: 8px;
@@ -923,7 +947,7 @@ footer {
 
     .restaurant__menu__content {
         width: 100vw;
-        height: 436px;
+        height: 120px;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 100%);
         justify-items: center;
@@ -1033,6 +1057,12 @@ footer {
     display: flex;
     flex-direction: column;
     padding-top: 1rem;
+    opacity: 0;
+}
+
+.showAboutRestuarantMainPage {
+    animation: showContentX 2s ease forwards;
+    animation-fill-mode: forwards;
 }
 
 .text__header {
@@ -1074,6 +1104,12 @@ footer {
         "enviroment menu";
     justify-content: flex-end;
     justify-items: center;
+    opacity: 0;
+}
+
+.showAboutRestuarantIconsMainPage {
+    animation: showContentXL 2s ease forwards;
+    animation-fill-mode: forwards;
 }
 
 .icons__item-layout {
